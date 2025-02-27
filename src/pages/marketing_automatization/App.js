@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import styles from '../../styles/App.css';
 import { useState } from "react";
-
+import LoadingSpinner from "../../components/spinner.jsx"
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 function App() {
   const [imageUrl, setImageUrl] = useState(null);
@@ -21,7 +22,6 @@ function App() {
     setImageUrl(null);
 
     try {
-      // Llamada única al backend para obtener el texto y la imagen generada
       const response = await fetch(`${BASE_URL}/api/generate-post`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,6 +44,7 @@ function App() {
 
   return (
     <section className="container-App">
+      {loading && <LoadingSpinner />}
       <div className="Container-Prompt">
         <div> 
           <div className="tittle-prompt">
@@ -72,6 +73,7 @@ function App() {
             </div>
           </div>   
         </div>
+
         
         {(responseText && imageUrl) && (
           <div className="Publicacion">
