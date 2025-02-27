@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/inmobiliaria_frontend/build/static/css/main.f6968efb.css",
+    "main.js": "/inmobiliaria_frontend/build/static/js/main.aa708d9d.js",
+    "index.html": "/inmobiliaria_frontend/build/index.html",
+    "main.f6968efb.css.map": "/inmobiliaria_frontend/build/static/css/main.f6968efb.css.map",
+    "main.aa708d9d.js.map": "/inmobiliaria_frontend/build/static/js/main.aa708d9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6968efb.css",
+    "static/js/main.aa708d9d.js"
+  ]
+}
