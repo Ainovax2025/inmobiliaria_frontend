@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Merriweather', serif;
+}
+
+.container-App{
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e4e0;
+}
+button{
+  cursor: pointer;
+}
+
+
+.Container-Prompt{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tittle-prompt{
+  text-align: center;
+}
+
+.tittle-prompt h1{
+  font-size: 2rem;
+  color: #373a32;
+  margin: 6px;
+}
+
+.tittle-prompt h4{
+  height: 10%;
+  font-size: 0.7rem;
+  color: #686a66;
+  font-weight: 700;
+  margin: 0px;
+}
+
+
+
+.container-input-prompt{
+  background: white;
+  padding: 10px;
+  width: 560px;
+  border-radius: 10px;
+  margin-top: 35px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container-input-prompt textarea{
+  width: 100%;
+  height: 95%;
+  border: 1px solid #a9a9a947;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: top;
+  resize: none;
+  background-color: #f9fafb;
+  padding: 10px 15px 0px 15px;
+  box-sizing: border-box;
+}
+
+
+.container-input-prompt h4{
+  margin:5px 5px 5px 0px;
+}
+
+.box-prompt{
+  width: 100%;
+  height: 16vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.GenerarPost{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 27px;
+  margin: 8px 0px 8px 0px;
+}
+.GenerarPost button {
+  background: #5d6244;
+  border: 1px solid #838587;
+  border-radius: 10px;
+  color: white;
+  width: 130px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  height: 100%;
+    
+}
+
+.box-tittle{
+  height: 16%;
+}
+.box-tittle h4{
+  color: #686a66;
+  font-size: 0.8rem;
+}
+.box-textarea{
+  height: 54%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.Publicacion{
+  background: white;
+  padding: 10px;
+  width: 560px;
+  border-radius: 10px;
+  margin-top: 35px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  height: 40vh;
+}
+.ContainerPublicacion{
+  padding: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.ContainerPublicacion h4 {
+  margin: 0px 0px 10px 0px;
+  height: 8%;
+  color: #373a32;
+
+}
+.ContainerPreview{
+  display: flex;
+  height: 90%;
+  gap:10px
+}
+.containerImage{
+  background: #e5e7eb;
+  height: 100%;
+  width: 50%;
+  border-radius: 10px;
+}
+
+
+.containerImage {
+  background: #e5e7eb;
+  height: 100%;
+  width: 50%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Para evitar desbordamiento */
+}
+
+.containerImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para llenar el contenedor sin deformarse */
+  border-radius: 10px; /* Mantener el borde redondeado en la imagen */
+}
+.ContainerTextGenerator{
+  width: 50%;
+  height: 100%;
+}
+.contenedortexto{
+  border: 1px solid #e9ebed;
+  border-radius: 10px;
+  background: #f9fafb;
+  padding: 10px;
+  overflow: auto;
+  height: 81%;
+  box-sizing: border-box;
+}
+
+.contenedortexto h4{
+  font-size: 0.7rem;
+  margin: 0px;
+}
+.contenedortexto h5{
+  font-size: 0.7rem;
+  margin: 10px 0px 0px 0px;
+  color:#686a66
+}
+.ContainerBtnPublicar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+.ContainerBtnPublicar button{
+  background-color: #5d6244;
+  border: 1px solid #5d6244;
+  padding: 10px 0px 10px 0px;
+  border-radius: 7px;
+  width: 100%;
+  color: white;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+  .container-input-prompt{
+    width: 82vw;
+  }
+  .Publicacion{
+    width: 82vw;
+  }
+  .ContainerPreview{
+    display: flex;
+    height: 100%;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .ContainerTextGenerator {
+    width: 100%;
+    height: 50%; 
+  }
+  .containerImage {
+    background: #e5e7eb;
+    height: 38%;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-width: 180px;
+}
+.contenedortexto{
+  border: 1px solid #e9ebed;
+  border-radius: 10px;
+  background: #f9fafb;
+  padding: 10px;
+  height: 64%;
+  overflow: auto;
+}
+.contenedortexto h5{
+  font-size: 0.7rem;
+  margin: 10px 0px 0px 0px;
+  color: #686a66;
+
+}
+}
