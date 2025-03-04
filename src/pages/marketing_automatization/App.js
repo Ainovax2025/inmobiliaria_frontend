@@ -42,6 +42,27 @@ function App() {
     }
   };
 
+
+  const publicarPost = async (responseText,imageUrl) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${BASE_URL}/api/generate-postInstagram`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ responseText,imageUrl })
+      });
+
+      console.log(response)
+
+    } catch (error) {
+      console.error("Error en la generación:", error);
+      setResponseText("Ocurrió un error al generar la respuesta.");
+    } finally {
+      setLoading(false);
+    }
+
+  }
+
   return (
     <section className="container-App">
       {loading && <LoadingSpinner />}
@@ -89,7 +110,7 @@ function App() {
                     <h5>{responseText || "Texto en proceso..."}</h5>
                   </div>    
                   <div className='ContainerBtnPublicar'>
-                    <button>Publicar</button>
+                  <button onClick={() => publicarPost(responseText, imageUrl)}>Publicar</button>
                   </div>          
                 </div>
               </div> 
