@@ -2,10 +2,15 @@
 import styles from '../../styles/App.css';
 import { useState } from "react";
 import LoadingSpinner from "../../components/spinner.jsx"
+import InstagramPost from "../../components/visualInstagram.jsx"
+import { FaWandMagicSparkles } from "react-icons/fa6";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 
 function App() {
+
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [responseText, setResponseText] = useState("");
@@ -52,6 +57,10 @@ function App() {
         body: JSON.stringify({ responseText,imageUrl })
       });
 
+      if(response.ok){
+        toast.success("Publicación generada con éxito!");
+      }
+
       console.log(response)
 
     } catch (error) {
@@ -65,9 +74,10 @@ function App() {
 
   return (
     <section className="container-App">
-      {loading && <LoadingSpinner />}
-      <div className="Container-Prompt">
-        <div> 
+       {loading && <LoadingSpinner />}
+       <ToastContainer />
+      <div className={responseText && imageUrl ? "LeftContainer" : "justLeftContainer"}>
+      <div className='containerPrompt'> 
           <div className="tittle-prompt">
             <h1>Generador de marketing</h1>
             <h4>Crea tu publicación con ayuda de tu asistente virtual Sofia</h4>
@@ -85,39 +95,25 @@ function App() {
                   placeholder="Escribe el texto para tu anuncio..."
                 />
               </div>
-
-              <div className="GenerarPost">
-                <button onClick={generatePost} disabled={loading}>
-                  {loading ? "Generando..." : "Generar"}
+                <button className="GenerarPost" onClick={generatePost} disabled={loading}>
+                  <span><FaWandMagicSparkles/> Generar publicación</span>
                 </button>
-              </div>
             </div>
           </div>   
         </div>
-
-        
-        {(responseText && imageUrl) && (
-          <div className="Publicacion">
-            <div className='ContainerPublicacion'>
-              <h4>Vista previa</h4> 
-              <div className='ContainerPreview'>
-                <div className='containerImage'>
-                  {imageUrl ? <img src={imageUrl} alt="Imagen generada" /> : <p>Imagen en proceso...</p>}
-                </div>
-                <div className='ContainerTextGenerator'>
-                  <div className='contenedortexto'>
-                    <h4>Texto Generado</h4>
-                    <h5>{responseText || "Texto en proceso..."}</h5>
-                  </div>    
-                  <div className='ContainerBtnPublicar'>
-                  <button onClick={() => publicarPost(responseText, imageUrl)}>Publicar</button>
-                  </div>          
-                </div>
-              </div> 
-            </div>
-          </div>
-        )}
       </div>
+      {(responseText && imageUrl) && (
+      <div className='RightContainer'>
+        <InstagramPost 
+            username="david montero l"
+            imageSrc={imageUrl}
+            caption = {responseText}
+          />
+          <button className='subirPost'  onClick={() => publicarPost(responseText, imageUrl)} >
+            Subir publicación
+          </button>
+      </div>
+    )}
     </section>
   );
 }

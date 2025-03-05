@@ -4,24 +4,59 @@ body {
   font-family: 'Merriweather', serif;
 }
 
-.container-App{
-  width: 100vw;
-  height: 100vh;
-  background-color: #e5e4e0;
-}
 button{
   cursor: pointer;
 }
 
+.container-App{
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e4e0;
+  display: flex;
+} 
+.LeftContainer{
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 
-.Container-Prompt{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.justLeftContainer{
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  background: #e5e4e0;
+}
+.RightContainer{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.containerPrompt{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 .tittle-prompt{
   text-align: center;
+}
+.GenerarPost span {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
 }
 
 .tittle-prompt h1{
@@ -38,7 +73,14 @@ button{
   margin: 0px;
 }
 
-
+.box-prompt{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .container-input-prompt{
   background: white;
@@ -51,7 +93,6 @@ button{
 
 .container-input-prompt textarea{
   width: 100%;
-  height: 95%;
   border: 1px solid #a9a9a947;
   border-radius: 10px;
   text-align: left;
@@ -60,6 +101,7 @@ button{
   background-color: #f9fafb;
   padding: 10px 15px 0px 15px;
   box-sizing: border-box;
+  min-height: 10vh;
 }
 
 
@@ -67,181 +109,28 @@ button{
   margin:5px 5px 5px 0px;
 }
 
-.box-prompt{
-  width: 100%;
-  height: 16vh;
-  padding: 10px;
-  box-sizing: border-box;
-}
 
-.GenerarPost{
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  height: 27px;
-  margin: 8px 0px 8px 0px;
-}
-.GenerarPost button {
-  background: #5d6244;
-  border: 1px solid #838587;
-  border-radius: 10px;
-  color: white;
-  width: 130px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  height: 100%;
-    
-}
-
-.box-tittle{
-  height: 16%;
-}
 .box-tittle h4{
   color: #686a66;
   font-size: 0.8rem;
 }
 .box-textarea{
-  height: 54%;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 5px;
 }
-
-.Publicacion{
-  background: white;
-  padding: 10px;
-  width: 560px;
-  border-radius: 10px;
-  margin-top: 35px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  height: 40vh;
-}
-.ContainerPublicacion{
-  padding: 10px;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.ContainerPublicacion h4 {
-  margin: 0px 0px 10px 0px;
-  height: 8%;
-  color: #373a32;
-
-}
-.ContainerPreview{
-  display: flex;
-  height: 90%;
-  gap:10px
-}
-.containerImage{
-  background: #e5e7eb;
-  height: 100%;
-  width: 50%;
-  border-radius: 10px;
-}
-
-
-.containerImage {
-  background: #e5e7eb;
-  height: 100%;
-  width: 50%;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Para evitar desbordamiento */
-}
-
-.containerImage img {
+.GenerarPost{
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ajusta la imagen para llenar el contenedor sin deformarse */
-  border-radius: 10px; /* Mantener el borde redondeado en la imagen */
-}
-.ContainerTextGenerator{
-  width: 50%;
-  height: 100%;
-}
-.contenedortexto{
-  border: 1px solid #e9ebed;
-  border-radius: 10px;
-  background: #f9fafb;
-  padding: 10px;
-  overflow: auto;
-  height: 81%;
-  box-sizing: border-box;
-}
-
-.contenedortexto h4{
-  font-size: 0.7rem;
-  margin: 0px;
-}
-.contenedortexto h5{
-  font-size: 0.7rem;
-  margin: 10px 0px 0px 0px;
-  color:#686a66
-}
-.ContainerBtnPublicar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0px 10px 0px;
-}
-.ContainerBtnPublicar button{
-  background-color: #5d6244;
+  height: 35px;
+  border-radius: 8px;
   border: 1px solid #5d6244;
-  padding: 10px 0px 10px 0px;
-  border-radius: 7px;
-  width: 100%;
+  background: #5d6244;
   color: white;
 }
-
-
-
-
-@media (max-width: 600px) {
-
-  .container-input-prompt{
-    width: 82vw;
-  }
-  .Publicacion{
-    width: 82vw;
-  }
-  .ContainerPreview{
-    display: flex;
-    height: 100%;
-    gap: 10px;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  .ContainerTextGenerator {
-    width: 100%;
-    height: 50%; 
-  }
-  .containerImage {
-    background: #e5e7eb;
-    height: 38%;
-    width: 100%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    min-width: 180px;
-}
-.contenedortexto{
-  border: 1px solid #e9ebed;
-  border-radius: 10px;
-  background: #f9fafb;
-  padding: 10px;
-  height: 64%;
-  overflow: auto;
-}
-.contenedortexto h5{
-  font-size: 0.7rem;
-  margin: 10px 0px 0px 0px;
-  color: #686a66;
-
-}
+.subirPost{
+  width: 350px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #5d6244;
+    background: #5d6244;
+    color: white;
 }
