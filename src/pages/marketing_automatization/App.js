@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import styles from '../../styles/App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingSpinner from "../../components/spinner.jsx"
 import InstagramPost from "../../components/visualInstagram.jsx"
 import { FaWandMagicSparkles } from "react-icons/fa6";
@@ -15,8 +15,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [responseText, setResponseText] = useState("");
   const [inputText, setInputText] = useState(""); 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const generatePost = async () => {
+
+
+
     if (!inputText.trim()) {
       alert("Por favor, ingresa una descripción antes de generar la publicación.");
       return;
@@ -73,7 +83,16 @@ function App() {
   }
 
   return (
-    <section className="container-App">
+    <section    className="container-App"
+    style={{
+      height: screenWidth <= 1000
+        ? !responseText && !imageUrl
+          ? "100vh"
+          : responseText && imageUrl
+            ? "auto"
+            : ""
+        : ""
+    }}>
        {loading && <LoadingSpinner />}
        <ToastContainer />
       <div className={responseText && imageUrl ? "LeftContainer" : "justLeftContainer"}>
@@ -113,7 +132,7 @@ function App() {
             Subir publicación
           </button>
       </div>
-    )}
+     )} 
     </section>
   );
 }
