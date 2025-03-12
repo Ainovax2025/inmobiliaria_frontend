@@ -9,11 +9,13 @@ function App() {
   return (
     <>
       <Navbar /> 
-      <Routes>
-        <Route path="/inmobiliaria_frontend" element={<Home />} />
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/marketing" element={<Marketing />} />
-      </Routes>
+      <div style={{paddingBottom:'50px '}}>
+        <Routes>
+          <Route path="/inmobiliaria_frontend" element={<Home />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/marketing" element={<Marketing />} />
+        </Routes>
+      </div>
     </>
   );
 }
