@@ -87,7 +87,7 @@ function Marketing() {
     style={{
       height: screenWidth <= 1000
         ? !responseText && !imageUrl
-          ? "100vh"
+          ? "90vh"
           : responseText && imageUrl
             ? "auto"
             : ""
