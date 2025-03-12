@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/inmobiliaria_frontend/static/css/main.bd0eaade.css",
-    "main.js": "/inmobiliaria_frontend/static/js/main.450049e6.js",
+    "main.css": "/inmobiliaria_frontend/static/css/main.49dc250e.css",
+    "main.js": "/inmobiliaria_frontend/static/js/main.ff7a7509.js",
     "index.html": "/inmobiliaria_frontend/index.html",
-    "main.bd0eaade.css.map": "/inmobiliaria_frontend/static/css/main.bd0eaade.css.map",
-    "main.450049e6.js.map": "/inmobiliaria_frontend/static/js/main.450049e6.js.map"
+    "main.49dc250e.css.map": "/inmobiliaria_frontend/static/css/main.49dc250e.css.map",
+    "main.ff7a7509.js.map": "/inmobiliaria_frontend/static/js/main.ff7a7509.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd0eaade.css",
-    "static/js/main.450049e6.js"
+    "static/css/main.49dc250e.css",
+    "static/js/main.ff7a7509.js"
   ]
 }
