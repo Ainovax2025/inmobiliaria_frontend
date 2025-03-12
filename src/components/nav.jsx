@@ -19,7 +19,7 @@ function Navbar() {
       
       <ul className="navbar-menu">
         <li>
-          <Link to="/">
+          <Link to="/inmobiliaria_frontend">
             <FaHome /> Home
           </Link>
         </li>
