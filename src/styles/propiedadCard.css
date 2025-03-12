@@ -69,3 +69,11 @@
     color: #888;
   }
   
+
+  @media screen and (max-width: 420px) {
+    
+    .property-card{
+      width: 360px;
+    }
+}
+
