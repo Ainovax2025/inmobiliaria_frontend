@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import styles from '../../styles/App.css';
+import styles from '../../styles/marketing.css';
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../../components/spinner.jsx"
 import InstagramPost from "../../components/visualInstagram.jsx"
@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 
-function App() {
+function Marketing() {
 
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -137,4 +137,4 @@ function App() {
   );
 }
 
-export default App;
+export default Marketing;
