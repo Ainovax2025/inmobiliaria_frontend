@@ -59,7 +59,7 @@ const Marketplace = () => {
 
   const cambiarPagina = (nuevaPagina) => {
     setPaginaActual(nuevaPagina);
-    obtenerPropiedades(nuevaPagina);
+    obtenerPropiedades(nuevaPagina, filtros);
   };
 
   return (
