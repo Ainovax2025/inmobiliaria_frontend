@@ -1,0 +1,136 @@
+.container{
+    padding: 16px 0px;
+}
+.containerFilter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.containerSelect{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap:10px;
+}
+ .containerSelect .form-select{
+    padding: 9px 26px;
+    border-radius: 7px;
+    border: 2px solid #bbbfc2;
+    background: #cfd3dc;
+    color: #5d6168;
+}
+
+
+.containerinput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.containerinput button{
+    padding: 9px 26px;
+    border-radius: 7px;
+    border: 2px solid #5d6244;
+    background: #5d6244;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.containerinput input{
+    width: 25vw;
+    padding: 10px 0px 10px 5px;
+    border-radius: 7px;
+    border: 2px solid #bbbfc2;
+    background: #cfd3dc;
+    color: #5d6168;
+}
+
+
+  
+
+.ContainerFilterMobile{
+    height: 128px;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background: white;
+    display: none;
+    width: 100vw;
+    border-bottom: 2px solid #d6d9df;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+.containerinputMobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.containerinputMobile label{
+    width: 100%;
+}
+.containerinputMobile input{
+    width: 100%;
+    padding: 10px 0px 10px 5px;
+    border-radius: 7px;
+    border: 2px solid #bbbfc2;
+    background: #f9fafb;
+    color: #5d6168;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.containerinputMobile input:focus-visible, .containerSelect .form-select:focus-visible , .containerinput input:focus-visible {
+    border-color: #5d6244 !important; 
+    box-shadow: 0 0 5px rgba(82, 85, 58, 0.5); 
+    outline: none; 
+  }
+
+.buttonMobile{
+    padding: 11px 20px;
+    border: 1px solid #cfd3dc;
+    border-radius: 9px;
+    background: white;
+    font-size: 13px;
+    height: 45px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerbtnsMobile{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+.btnSelect{
+    background: #5d6244;
+    color: white;
+    padding: 11px 20px;
+    border: 1px solid #cfd3dc;
+    border-radius: 9px;
+    font-size: 13px;
+    height: 45px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+@media screen and (max-width: 900px) {
+    .container{
+        display: none;
+    }
+    
+    .ContainerFilterMobile{
+        display: grid;
+    }
+}
