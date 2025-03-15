@@ -31,19 +31,30 @@ const PropiedadCard = ({
       </div>
       <div className="property-info">
         <div className="property-price">
-          {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(price)}
-        </div>
-        <div className="property-title">
-          {tipo}
-        </div>
-        <div className="property-details">
-          <span><FaBed /> {bedrooms} </span>
-          <span><FaBath /> {bathrooms} </span>
-          <span><FaRuler/> {area}</span>
+          {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP',minimumFractionDigits: 0,maximumFractionDigits: 0 }).format(price)}
         </div>
         <div className="property-location">
           <FaLocationDot/> {location}
         </div>
+        <div className="property-details">
+        <span>
+          <FaBed /> {bedrooms} {bedrooms === 1 ? "habitación" : "habitaciones"}
+        </span>
+        <span>
+          <FaBath /> {bathrooms} {bathrooms === 1 ? "baño" : "baños"}
+        </span>
+        <span>
+          <FaRuler /> {area} m²
+        </span>
+        </div>
+        <div className="property-title">
+          {tipo}
+          <button> 
+            ver detalles
+          </button>
+        </div>
+
+
       </div>
     </div>
   );

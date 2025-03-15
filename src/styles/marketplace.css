@@ -2,15 +2,18 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 75px 0px 0px 0px;
 }
 .ContainerCardsPropiedades{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: auto;
     gap: 20px;
 }
-
+.ContainerCards{
+    height: 70vh;
+    overflow-y: auto;
+}
 @media screen and (max-width: 1200px) {
     
     .ContainerCardsPropiedades{
@@ -19,14 +22,27 @@
         grid-template-rows: repeat(3, 1fr);
         gap: 20px;
     }
+    
 }
 
 @media screen and (max-width: 900px) {
     
     .ContainerCardsPropiedades{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 20px;
+    }
+    .ContainerPropiedades{
+        padding: 0px;
+        padding-top: 50px !important;
+        padding-bottom: 120px;
+        gap: 41px;
+        
+
+    }
+    .ContainerCards{
+        height: auto;
+        overflow-y: hidden;
+        margin-top: 90px;
     }
 }
