@@ -10,10 +10,16 @@
     background: #fff;
     border: 2px solid #ddd;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 10px;
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
   }
   
   .paginador-boton:hover {
