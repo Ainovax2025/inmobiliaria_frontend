@@ -13,8 +13,14 @@ function App() {
       <div style={{ paddingBottom: "50px " }}>
         <Routes>
           <Route path="/inmobiliaria_frontend" element={<Home />} />
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/marketing" element={<Marketing />} />
+          <Route
+            path="/inmobiliaria_frontend/marketplace"
+            element={<Marketplace />}
+          />
+          <Route
+            path="/inmobiliaria_frontend/marketing"
+            element={<Marketing />}
+          />
         </Routes>
       </div>
       <InfoBottomPage />

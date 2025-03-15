@@ -22,12 +22,12 @@ function Navbar() {
           </Link>
         </li>
         <li className="dropdown">
-          <Link to="/marketplace">
+          <Link to="/inmobiliaria_frontend/marketplace">
             <FaStore /> Marketplace
           </Link>
         </li>
         <li className="dropdown">
-          <Link to="/marketing">
+          <Link to="/inmobiliaria_frontend/marketing">
             <FaBullhorn /> Marketing
           </Link>
         </li>
