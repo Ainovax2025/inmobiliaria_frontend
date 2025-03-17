@@ -1,13 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import styles from '../styles/propiedadCard.css';
 import React from 'react';
-
+import { useNavigate } from "react-router-dom";  // <-- Importar useNavigate
 import { FaRuler, FaBed,FaBath  } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 
 
 const PropiedadCard = ({
+  id,
   imageUrl,
   status,
   price,
@@ -17,6 +18,12 @@ const PropiedadCard = ({
   area,
   location,
 }) => {
+  const navigate = useNavigate();
+
+  const irADetalle = () => {
+    navigate(`/inmobiliaria_frontend/marketing/${id}`);
+  };
+
   return (
     <div className="property-card">
       <div className="property-image-container">
@@ -49,7 +56,7 @@ const PropiedadCard = ({
         </div>
         <div className="property-title">
           {tipo}
-          <button> 
+          <button onClick={irADetalle}>
             ver detalles
           </button>
         </div>

@@ -10,7 +10,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <Link to="/" className="logo">
-          <PiBuildingApartmentFill style={{color :'#5d6244', fontSize:'30px'}} />
+          <PiBuildingApartmentFill style={{color :'white', fontSize:'30px'}} />
           <span className="logo-text">MP Inmobiliaria</span>
         </Link>
       </div>

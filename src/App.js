@@ -4,6 +4,7 @@ import Navbar from "./components/nav";
 import Home from "./pages/home/home";
 import Marketing from "./pages/marketing/Marketing.js";
 import Marketplace from "./pages/marketplace/marketplace.js";
+import PropiedadDetalle from "./pages/marketplace/propiedadDetalle.js";
 import InfoBottomPage from "./components/infoBottomPage.jsx";
 
 function App() {
@@ -20,6 +21,11 @@ function App() {
           <Route
             path="/inmobiliaria_frontend/marketing"
             element={<Marketing />}
+          />
+
+          <Route
+            path="/inmobiliaria_frontend/marketing/:id"
+            element={<PropiedadDetalle />}
           />
         </Routes>
       </div>

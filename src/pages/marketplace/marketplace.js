@@ -25,7 +25,7 @@ const Marketplace = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pagina, ...filtrosAplicados }), // Enviar los filtros aplicados
+          body: JSON.stringify({ pagina, ...filtrosAplicados }),
         }
       );
 
@@ -33,6 +33,8 @@ const Marketplace = () => {
         throw new Error("Error en la obtención de las propiedades");
       const data = await response.json();
       setPropiedades(data.propiedades);
+
+      console.log(data.propiedades);
       setData(data);
       setLoading(false);
     } catch (error) {
@@ -70,7 +72,7 @@ const Marketplace = () => {
         <div className="ContainerCardsPropiedades">
           {propiedades.map((propiedad) => (
             <PropiedadCard
-              key={propiedad.id}
+              id={propiedad.id}
               imageUrl={propiedad.imagenes[0]}
               status={propiedad.tipooperacion}
               price={propiedad.precio}
@@ -85,6 +87,7 @@ const Marketplace = () => {
       </div>
       <Paginador
         totalDePaginas={Data.totalPaginas}
+        paginaActual={paginaActual}
         onPageChange={cambiarPagina}
       />
     </div>

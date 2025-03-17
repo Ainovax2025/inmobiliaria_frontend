@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import "../styles/paginador.css"; // Importa el archivo de estilos
-import { FaAngleLeft,FaAngleRight } from "react-icons/fa";
+import "../styles/paginador.css";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const Paginador = ({ totalDePaginas = 1, onPageChange }) => {
+const Paginador = ({ totalDePaginas = 1, paginaActual, onPageChange }) => {
   const totalPaginas = totalDePaginas;
-  const [paginaActual, setPaginaActual] = useState(1);
 
   const cambiarPagina = (nuevaPagina) => {
     if (nuevaPagina >= 1 && nuevaPagina <= totalPaginas) {
-      setPaginaActual(nuevaPagina);
       onPageChange(nuevaPagina);
     }
   };
@@ -21,7 +19,7 @@ const Paginador = ({ totalDePaginas = 1, onPageChange }) => {
         onClick={() => cambiarPagina(paginaActual - 1)} 
         disabled={paginaActual === 1}
       >
-       <FaAngleLeft/>
+        <FaAngleLeft />
       </button>
 
       {[...Array(totalPaginas)].map((_, index) => {
@@ -42,16 +40,16 @@ const Paginador = ({ totalDePaginas = 1, onPageChange }) => {
         onClick={() => cambiarPagina(paginaActual + 1)} 
         disabled={paginaActual === totalPaginas}
       >
-        <FaAngleRight/>
+        <FaAngleRight />
       </button>
     </div>
   );
 };
 
 Paginador.propTypes = {
-  totalPaginas: PropTypes.number.isRequired,
-  elementosPorPagina: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func,
+  totalDePaginas: PropTypes.number.isRequired,
+  paginaActual: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Paginador;
