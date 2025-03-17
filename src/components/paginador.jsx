@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../styles/paginador.css";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, } from "react-icons/fa";
 
 const Paginador = ({ totalDePaginas = 1, paginaActual, onPageChange }) => {
   const totalPaginas = totalDePaginas;
