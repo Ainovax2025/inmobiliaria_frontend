@@ -18,7 +18,12 @@ const PropiedadDetalle = () => {
 
   const [propiedad, setPropiedad] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarFormulario, setMostrarFormulario] = useState(
+    window.innerWidth > 900 ? true : false
+  );
+  const [mostrarFormularioMobile, setMostrarFormularioMobile] = useState(
+    window.innerWidth < 900 ? true : false
+  );
 
   useEffect(() => {
     const obtenerPropiedadById = async () => {
@@ -50,8 +55,10 @@ const PropiedadDetalle = () => {
     const handleResize = () => {
       if (window.innerWidth > 900) {
         setMostrarFormulario(true);
+        setMostrarFormularioMobile(false);
       } else {
         setMostrarFormulario(false);
+        setMostrarFormularioMobile(true);
       }
     };
 
@@ -62,6 +69,7 @@ const PropiedadDetalle = () => {
   const handleToggle = () => {
     if (window.innerWidth <= 900) {
       setMostrarFormulario((prev) => !prev);
+      setMostrarFormularioMobile((prev) => !prev);
     }
   };
   return (
@@ -154,7 +162,7 @@ const PropiedadDetalle = () => {
                     </div>
                   )}
                 </div>
-                {!mostrarFormulario && (
+                {mostrarFormularioMobile && (
                   <div className="agentCardMobile">
                     <div
                       style={{
