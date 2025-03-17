@@ -18,12 +18,8 @@ const PropiedadDetalle = () => {
 
   const [propiedad, setPropiedad] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mostrarFormulario, setMostrarFormulario] = useState(
-    window.innerWidth > 900 ? true : false
-  );
-  const [mostrarFormularioMobile, setMostrarFormularioMobile] = useState(
-    window.innerWidth < 900 ? true : false
-  );
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarFormularioMobile, setMostrarFormularioMobile] = useState(true);
 
   useEffect(() => {
     const obtenerPropiedadById = async () => {
@@ -62,6 +58,7 @@ const PropiedadDetalle = () => {
       }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [id]);
