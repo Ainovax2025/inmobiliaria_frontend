@@ -219,22 +219,9 @@
     color: white;
     font-size: 11px;
 }
-.agentCardMobile button{
-    background: #3f4035;
-    border: none;
-    padding: 15px 26px;
-    color: white;
-    border-radius: 7px;
-}
-.minimizeForm{
-    width: 25vw;
-    display: none;
-    justify-content: end;
-}
+
 @media screen and (max-width: 900px) {
-    .minimizeForm{
-        display: flex;
-    }
+
     .spanTipoOperacionMobile{
         display: flex;
     }
@@ -297,13 +284,4 @@
         margin:0px;
     }
 
-    .agentCardMobile{
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid #e5e7eb;
-        padding: 10px;
-        border-radius: 10px;
-        justify-content: space-between;
-    }
 }

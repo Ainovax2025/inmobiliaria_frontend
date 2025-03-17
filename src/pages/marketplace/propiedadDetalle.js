@@ -9,7 +9,6 @@ import {} from "react-icons/fa";
 import getAmenityIcon from "../../components/amenidades.jsx";
 import agentPlaceholder from "../../assets/wallpapers/Agent2.jpg";
 import GoBack from "../../components/navGoback.jsx";
-import { CiMinimize1 } from "react-icons/ci";
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -18,9 +17,6 @@ const PropiedadDetalle = () => {
 
   const [propiedad, setPropiedad] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
-  const [mostrarFormularioMobile, setMostrarFormularioMobile] = useState(true);
-
   useEffect(() => {
     const obtenerPropiedadById = async () => {
       try {
@@ -47,28 +43,8 @@ const PropiedadDetalle = () => {
     };
 
     obtenerPropiedadById();
-
-    const handleResize = () => {
-      if (window.innerWidth > 900) {
-        setMostrarFormulario(true);
-        setMostrarFormularioMobile(false);
-      } else {
-        setMostrarFormulario(false);
-        setMostrarFormularioMobile(true);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, [id]);
 
-  const handleToggle = () => {
-    if (window.innerWidth <= 900) {
-      setMostrarFormulario((prev) => !prev);
-      setMostrarFormularioMobile((prev) => !prev);
-    }
-  };
   return (
     <>
       {window.innerWidth <= 900 && <GoBack />}
@@ -159,68 +135,38 @@ const PropiedadDetalle = () => {
                     </div>
                   )}
                 </div>
-                {mostrarFormularioMobile && (
-                  <div className="agentCardMobile">
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <img
-                        src={agentPlaceholder}
-                        alt="Agente John Smith"
-                        className="agentImage"
-                      />
-                      <div className="agentInfo">
-                        <h3 className="agentName">David Montero</h3>
-                        <p className="agentTitle">Agente inmobiliario</p>
+                <div className="ContainerFormContacto">
+                  <form className="formContacto">
+                    <div className="agentCard">
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <img
+                          src={agentPlaceholder}
+                          alt="Agente John Smith"
+                          className="agentImage"
+                        />
+                        <div className="agentInfo">
+                          <h3 className="agentName">David Montero</h3>
+                          <p className="agentTitle">Agente inmobiliario</p>
+                        </div>
                       </div>
                     </div>
-                    <button onClick={handleToggle}>Contactar</button>
-                  </div>
-                )}
-                {mostrarFormulario && (
-                  <div className="ContainerFormContacto">
-                    <form className="formContacto">
-                      <div className="agentCard">
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: "10px",
-                          }}
-                        >
-                          <img
-                            src={agentPlaceholder}
-                            alt="Agente John Smith"
-                            className="agentImage"
-                          />
-                          <div className="agentInfo">
-                            <h3 className="agentName">David Montero</h3>
-                            <p className="agentTitle">Agente inmobiliario</p>
-                          </div>
-                        </div>
-                        <div className="minimizeForm">
-                          <button onClick={handleToggle}>
-                            <CiMinimize1 />
-                          </button>{" "}
-                        </div>
-                      </div>
-                      <input type="text" placeholder="Tu Nombre" required />
-                      <input type="email" placeholder="Tu Email" required />
-                      <input type="tel" placeholder="Tu Teléfono" required />
-                      <textarea placeholder="Mensaje" required></textarea>
-                      <button type="submit">Contactar Agente</button>
-                      <button type="button">
-                        <FaWhatsapp /> Whatsapp
-                      </button>
-                    </form>
-                  </div>
-                )}
+                    <input type="text" placeholder="Tu Nombre" required />
+                    <input type="email" placeholder="Tu Email" required />
+                    <input type="tel" placeholder="Tu Teléfono" required />
+                    <textarea placeholder="Mensaje" required></textarea>
+                    <button type="submit">Contactar Agente</button>
+                    <button type="button">
+                      <FaWhatsapp /> Whatsapp
+                    </button>
+                  </form>
+                </div>
               </>
             )}
           </section>
