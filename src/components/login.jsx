@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/login.css";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { CiUser } from "react-icons/ci";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+const BASE_URL = process.env.REACT_APP_BACKEND_URL_LOCAL;
 
 const Login = ({ isOpen, onClose }) => {
   const [isSignIn, setIsSignIn] = useState(true);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +18,28 @@ const Login = ({ isOpen, onClose }) => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/csrf-token`, {
+          credentials: "include", // ✅ Importante para recibir la cookie
+        });
+
+        if (!response.ok) {
+          throw new Error("No se pudo obtener el token CSRF");
+        }
+
+        const data = await response.json();
+        setCsrfToken(data.csrfToken);
+      } catch (error) {
+        console.error("Error obteniendo CSRF token:", error);
+      }
+    };
+
+    fetchCsrfToken();
+  }, []);
 
   const isValidEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -44,7 +70,7 @@ const Login = ({ isOpen, onClose }) => {
     setErrors({});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {};
@@ -69,16 +95,43 @@ const Login = ({ isOpen, onClose }) => {
     setErrors(newErrors);
 
     const sanitizedData = {
-      name: sanitizeInput(formData.name),
+      nombre: sanitizeInput(formData.name),
       email: sanitizeInput(formData.email),
-      password: formData.password,
+      contrasena: formData.password,
     };
 
     if (Object.keys(newErrors).length === 0) {
-      if (isSignIn) {
-        console.log("Enviando datos de Login:", sanitizedData);
-      } else {
-        console.log("Enviando datos de Registro:", sanitizedData);
+      try {
+        const response = await fetch(
+          `${BASE_URL}/usuarios/${isSignIn ? "login" : "crearUsuario"}`,
+          {
+            method: "POST",
+            credentials: "include", // ✅ Importante para incluir cookies
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRF-Token": csrfToken, // ✅ Agregar el token CSRF en los headers
+            },
+            body: JSON.stringify(
+              isSignIn
+                ? {
+                    email: sanitizedData.email,
+                    contrasena: sanitizedData.contrasena,
+                  }
+                : sanitizedData
+            ),
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message || "Error en el servidor");
+        }
+
+        toast.success(
+          isSignIn ? "Iniciaste sesión" : "Usuario creado exitosamente"
+        );
+      } catch (error) {
+        toast.error(error.message);
       }
     }
   };
@@ -91,6 +144,7 @@ const Login = ({ isOpen, onClose }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
+      <ToastContainer />
       <div
         className={`modal-content ${isSignIn ? "sign-in" : "sign-up"}`}
         onClick={(e) => e.stopPropagation()}
@@ -182,13 +236,11 @@ const Login = ({ isOpen, onClose }) => {
                       borderRadius: "7px",
                     }}
                   >
-                    {errors.email && <p className="error"> - {errors.email}</p>}
-                    {errors.password && (
-                      <p className="error"> - {errors.password}</p>
-                    )}
-                    {errors.confirmPassword && (
-                      <p className="error"> - {errors.confirmPassword}</p>
-                    )}
+                    {Object.entries(errors).map(([key, message]) => (
+                      <p key={key} className="error">
+                        - {message}
+                      </p>
+                    ))}
                   </div>
                 )}
 
@@ -248,14 +300,11 @@ const Login = ({ isOpen, onClose }) => {
                       borderRadius: "7px",
                     }}
                   >
-                    {errors.name && <p className="error"> - {errors.name}</p>}
-                    {errors.email && <p className="error"> - {errors.email}</p>}
-                    {errors.password && (
-                      <p className="error"> - {errors.password}</p>
-                    )}
-                    {errors.confirmPassword && (
-                      <p className="error"> - {errors.confirmPassword}</p>
-                    )}
+                    {Object.entries(errors).map(([key, message]) => (
+                      <p key={key} className="error">
+                        - {message}
+                      </p>
+                    ))}
                   </div>
                 )}
                 <button type="submit">Crear cuenta</button>
