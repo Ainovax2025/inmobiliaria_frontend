@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
-const BASE_URL = process.env.REACT_APP_BACKEND_URL_LOCAL;
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Login = ({ isOpen, onClose }) => {
   const [isSignIn, setIsSignIn] = useState(true);
