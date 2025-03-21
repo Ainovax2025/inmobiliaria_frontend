@@ -21,7 +21,7 @@ const PropiedadCard = ({
   const navigate = useNavigate();
 
   const irADetalle = () => {
-    navigate(`/inmobiliaria_frontend/marketing/${id}`);
+    navigate(`/marketing/${id}`);
   };
 
   return (

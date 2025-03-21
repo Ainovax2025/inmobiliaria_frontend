@@ -5,31 +5,22 @@ import Home from "./pages/home/home";
 import Marketing from "./pages/marketing/Marketing.js";
 import Marketplace from "./pages/marketplace/marketplace.js";
 import PropiedadDetalle from "./pages/marketplace/propiedadDetalle.js";
-import InfoBottomPage from "./components/infoBottomPage.jsx";
+import Footer from "./components/footer.jsx";
+import "./styles/app.css";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingBottom: "50px " }}>
+      <div style={{ paddingBottom: "50px", minHeight: "100dvh" }}>
         <Routes>
-          <Route path="/inmobiliaria_frontend" element={<Home />} />
-          <Route
-            path="/inmobiliaria_frontend/marketplace"
-            element={<Marketplace />}
-          />
-          <Route
-            path="/inmobiliaria_frontend/marketing"
-            element={<Marketing />}
-          />
-
-          <Route
-            path="/inmobiliaria_frontend/marketing/:id"
-            element={<PropiedadDetalle />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/marketing" element={<Marketing />} />
+          <Route path="/marketing/:id" element={<PropiedadDetalle />} />
         </Routes>
       </div>
-      <InfoBottomPage />
+      <Footer />
     </>
   );
 }
