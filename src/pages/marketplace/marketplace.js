@@ -1,11 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import styles from "../../styles/marketplace.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import PropiedadCard from "../../components/propiedadCard";
 import LoadingSpinner from "../../components/spinner.jsx";
 import Filter from "../../components/filter.jsx";
 import Paginador from "../../components/paginador.jsx";
+import { useCsrfToken } from "../../components/csrf.jsx";
+
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Marketplace = () => {
   const [Data, setData] = useState([]);
   const [propiedades, setPropiedades] = useState([]);
@@ -17,42 +20,49 @@ const Marketplace = () => {
     ubicacion: "",
   });
 
-  const obtenerPropiedades = async (pagina = 1, filtrosAplicados = {}) => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `${BASE_URL}/marketplace/propiedadespaginadas`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pagina, ...filtrosAplicados }),
-        }
-      );
+  const csrfToken = useCsrfToken();
 
-      if (!response.ok)
-        throw new Error("Error en la obtención de las propiedades");
-      const data = await response.json();
-      setPropiedades(data.propiedades);
+  const obtenerPropiedades = useCallback(
+    async (pagina = 1, filtrosAplicados = {}) => {
+      if (!csrfToken) return;
 
-      console.log(data.propiedades);
-      setData(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error en la obtención:", error);
-    }
-  };
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `${BASE_URL}/marketplace/propiedadespaginadas`,
+          {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRF-Token": csrfToken,
+            },
+            body: JSON.stringify({ pagina, ...filtrosAplicados }),
+          }
+        );
+
+        if (!response.ok)
+          throw new Error("Error en la obtención de las propiedades");
+        const data = await response.json();
+        setPropiedades(data.propiedades);
+        setData(data);
+      } catch (error) {
+        console.error("Error en la obtención:", error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [csrfToken]
+  );
 
   useEffect(() => {
     const fetchData = async () => {
-      obtenerPropiedades(paginaActual, filtros);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      await obtenerPropiedades(paginaActual, filtros);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     fetchData();
-  }, [paginaActual, filtros]);
+  }, [paginaActual, filtros, obtenerPropiedades]);
 
   const manejarCambioFiltros = (nuevosFiltros) => {
     setFiltros(nuevosFiltros);
@@ -72,6 +82,7 @@ const Marketplace = () => {
         <div className="ContainerCardsPropiedades">
           {propiedades.map((propiedad) => (
             <PropiedadCard
+              key={propiedad.id}
               id={propiedad.id}
               imageUrl={propiedad.imagenes[0]}
               status={propiedad.tipooperacion}

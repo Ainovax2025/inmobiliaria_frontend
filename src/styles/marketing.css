@@ -10,7 +10,7 @@ button{
 
 .container-App{
   width: 100vw;
-  height: 92vh;
+  height: 100dvh;
   background-color: #e5e4e0;
   display: flex;
 } 
@@ -45,7 +45,7 @@ button{
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
+  padding: 10px;
 }
 .tittle-prompt{
   text-align: center;
@@ -156,7 +156,8 @@ button{
     box-shadow: none;
   }
   .container-input-prompt {
-    min-width: 360px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 

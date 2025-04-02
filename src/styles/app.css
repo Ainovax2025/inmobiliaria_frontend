@@ -1,0 +1,10 @@
+.containerAplicacion{
+    padding-top: 70px;
+    min-height: 100dvh;
+}
+
+@media screen and (max-width: 900px) {
+    .containerAplicacion{
+        padding-top: 0px;
+    }
+}

@@ -174,7 +174,7 @@ body {
     border-radius: 5px;
   }
   
-  button {
+  .modal-overlay button {
     padding: 10px;
     background: #5d6244;
     color: white;
@@ -185,7 +185,7 @@ body {
     transition: 0.3s;
   }
   
-  button:hover {
+  .modal-overlay button:hover {
     background: #888678;
     color: white;
     border: 1px solid #888678;

@@ -1,12 +1,6 @@
-import React from "react";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaPhone,
-  FaEnvelope,
-} from "react-icons/fa";
-import "../styles/infoBottomPage.css";
+import React from 'react';
+import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaEnvelope } from 'react-icons/fa';
+import '../styles/footer.css';
 
 const Footer = () => {
   return (
@@ -14,10 +8,7 @@ const Footer = () => {
       <div className="containerFooter">
         <div className="footer-section about">
           <h4>About Us</h4>
-          <p>
-            Leading real estate agency with the best properties for sale and
-            rent.
-          </p>
+          <p>Leading real estate agency with the best properties for sale and rent.</p>
         </div>
 
         <div className="footer-section">
