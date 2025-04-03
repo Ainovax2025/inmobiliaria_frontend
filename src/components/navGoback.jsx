@@ -7,7 +7,7 @@ const GoBack = () => {
   const navigate = useNavigate();
 
   const irAMarket = () => {
-    navigate(`/#/marketplace`);
+    navigate(`/marketplace`);
   };
 
   return (
