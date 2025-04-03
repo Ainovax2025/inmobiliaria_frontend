@@ -4,20 +4,17 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const CsrfContext = createContext();
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 console.log(BASE_URL);
+
 const CsrfProvider = ({ children }) => {
   const [csrfToken, setCsrfToken] = useState(null);
 
   useEffect(() => {
     const fetchCsrfToken = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/csrf-token`, {
-          credentials: 'include'
-        });
-
+        const response = await fetch(`${BASE_URL}/csrf-token`); // ya no es necesario credentials: 'include'
         if (!response.ok) {
           throw new Error('No se pudo obtener el token CSRF');
         }
-
         const data = await response.json();
         setCsrfToken(data.csrfToken);
       } catch (error) {

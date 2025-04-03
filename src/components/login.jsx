@@ -81,7 +81,6 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
       try {
         const response = await fetch(`${BASE_URL}/usuarios/${isSignIn ? 'login' : 'crearUsuario'}`, {
           method: 'POST',
-          credentials: 'include', // ✅ Importante para incluir cookies
           headers: {
             'Content-Type': 'application/json',
             'X-CSRF-Token': csrfToken // ✅ Agregar el token CSRF en los headers

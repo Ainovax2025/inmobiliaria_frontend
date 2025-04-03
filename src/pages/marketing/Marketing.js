@@ -30,7 +30,6 @@ function Marketing() {
     try {
       const response = await fetch(`${BASE_URL}/api/generate-post`, {
         method: 'POST',
-        credentials: 'include',
         headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
         body: JSON.stringify({ inputText })
       });
@@ -80,7 +79,6 @@ function Marketing() {
           <div className="tittle-prompt">
             <h1>Generador de marketing</h1>
             <h4>Crea tu publicación con ayuda de tu asistente virtual Sofia</h4>
-            <h5>{csrfToken}</h5>
           </div>
 
           <div className="container-input-prompt">
