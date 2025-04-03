@@ -3,7 +3,6 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const CsrfContext = createContext();
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
-console.log(BASE_URL);
 
 const CsrfProvider = ({ children }) => {
   const [csrfToken, setCsrfToken] = useState(null);

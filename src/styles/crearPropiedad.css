@@ -1,0 +1,140 @@
+.containerCreadorPropiedades{
+    padding: 2vw 25vw;
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+.infoPropiedadCard,  .EspecificacionesCard , .ubicacionCard {
+    border-radius: 10px;
+    padding: 15px;
+    margin:0px;
+    place-content: center; 
+}
+.ImagenesCard , .AmenidadesCard, .ContactoCard{
+    border-radius: 10px;
+    padding: 10px;
+    margin:0px;
+}
+.infoPropiedadCard div, .EspecificacionesCard div, .ubicacionCard div{
+    padding: 5px;
+
+}
+.infoPropiedadCard {
+    grid-row: span 2 / span 2;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+h4{
+    margin: 0px 12px;
+    font-size: 17px;
+}
+
+.EspecificacionesCard {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ubicacionCard {
+    grid-column-start: 1;
+    grid-row-start: 4;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ImagenesCard {
+    grid-row: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.AmenidadesCard {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ContactoCard {
+    grid-row-start: 4;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.infoPropiedad{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.infoPropiedad div, .Descripcion div{
+    display: flex;
+    flex-direction: column;
+}
+.infoPropiedad label, .Descripcion label, .ubicacionCard label, .ContactoCard label, .Especificaciones label{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 5px;
+}
+.Area, .Baños, .Habitaciones{
+    width: 33%;
+    display: flex;
+}
+
+
+.infoPropiedad select {
+    padding: 9px 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.DescripcionTextArea{
+    height: 100px;
+    padding: 9px 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+.Especificaciones{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Especificaciones input{
+    max-width: 5vw;
+
+}
+.Especificaciones labes{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.CiudadInput, .BarrioInput{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 900px) {
+    .parent{    
+        display: flex;
+        flex-direction: column;
+    }
+    .infoPropiedad{
+        display: block;
+    }
+    .containerCreadorPropiedades{
+        padding: 5vw;
+        padding-bottom: 20vw;
+    }
+    .Especificaciones input{
+        max-width: 20vw;
+    }
+}
