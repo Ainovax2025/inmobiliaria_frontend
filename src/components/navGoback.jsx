@@ -7,7 +7,7 @@ const GoBack = () => {
   const navigate = useNavigate();
 
   const irAMarket = () => {
-    navigate(`/inmobiliaria_frontend/#/marketplace`);
+    navigate(`/#/marketplace`);
   };
 
   return (
