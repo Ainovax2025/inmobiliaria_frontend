@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import styles from '../../styles/marketing.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LoadingSpinner from '../../components/spinner.jsx';
 import InstagramPost from '../../components/visualInstagram.jsx';
 import { FaWandMagicSparkles } from 'react-icons/fa6';
@@ -15,15 +15,8 @@ function Marketing() {
   const [loading, setLoading] = useState(false);
   const [responseText, setResponseText] = useState('');
   const [inputText, setInputText] = useState('');
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const csrfToken = useCsrfToken();
 
-  useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
   const generatePost = async () => {
     if (!inputText.trim()) {
       alert('Por favor, ingresa una descripción antes de generar la publicación.');
@@ -87,6 +80,7 @@ function Marketing() {
           <div className="tittle-prompt">
             <h1>Generador de marketing</h1>
             <h4>Crea tu publicación con ayuda de tu asistente virtual Sofia</h4>
+            <h5>{csrfToken}</h5>
           </div>
 
           <div className="container-input-prompt">
