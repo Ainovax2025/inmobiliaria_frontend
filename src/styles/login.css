@@ -40,6 +40,8 @@ body {
   
   .right-panel {
     transform: translateX(0%);
+    padding: 90px;
+    width: 60%;
   }
   
   .sign-up .left-panel {
@@ -208,4 +210,42 @@ body {
   .switch-mode span:hover {
     text-decoration: underline;
   }
+
+  .toggle-auth{
+    padding: 47px;
+  }
+  .toggle-auth p {
+    margin: 0px;
+    font-size: 11px;
+  }
+  .toggle-auth button{
+    font-size: 9px;
+  }
   
+
+  @media screen and (max-width: 900px) {
+    .sign-up .left-panel {
+      transform: translateX(0);
+  }
+  
+
+    .hide-right.right-panel {
+      display: none !important;
+    }
+  
+    .hide-left.left-panel {
+      display: none !important;
+    }
+    .right-panel {
+      padding: 0px;
+      width: 100%;
+    }
+    .modal-content{
+      width: 90%;
+      height: 60dvh;
+    }
+    .ContainerSignUp{
+      width: 100%;
+      padding: 7vw;
+    }
+  }

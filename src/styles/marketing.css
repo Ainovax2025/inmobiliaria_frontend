@@ -143,11 +143,20 @@ button{
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
 
   .container-App{
     flex-direction: column;
     gap:20px;
+    height: auto;
+  }
+  .subirPost{
+    width: 95%;
+  }
+
+  .RightContainer{
+    gap:10px;
+    padding-bottom: 10vh;
   }
 
   .LeftContainer, .justLeftContainer,.RightContainer{

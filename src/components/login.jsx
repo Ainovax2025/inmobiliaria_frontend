@@ -18,6 +18,7 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
     confirmPassword: ''
   });
   const [errors, setErrors] = useState({});
+  const isMobile = window.innerWidth < 900;
 
   const isValidEmail = email => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -99,7 +100,6 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
         if (!response.ok) {
           throw new Error(data.message || 'Error en el servidor');
         }
-        console.log(data);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('rol', JSON.stringify(data.rol));
@@ -129,10 +129,12 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
           ✖
         </button>
         <div
-          className={`containerParts ${isSignIn ? 'left-panel' : 'right-panel'}`}
+          className={`containerParts ${isSignIn ? 'left-panel' : 'right-panel'} ${
+            isMobile && !isSignIn ? 'hide-right' : isMobile && isSignIn ? 'hide-left' : ''
+          }`}
           style={{
             background: 'radial-gradient(circle, rgba(93,98,68,1) 0%, rgba(89,73,67,1) 100%)',
-            width: '40%'
+            width: isMobile ? '100%' : '40%'
           }}>
           <div className="ContainerText">
             <div>
@@ -157,9 +159,7 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
             </div>
           </div>
         </div>
-        <div
-          className={`containerParts ${isSignIn ? 'right-panel' : 'left-panel'}`}
-          style={{ padding: '90px', width: '60%' }}>
+        <div className={`containerParts ${isSignIn ? 'right-panel' : 'left-panel'}`}>
           <div className="ContainerSignUp">
             <div className="modal-header">
               <h2>{isSignIn ? 'Iniciar sesión' : 'Crear cuenta'}</h2>
@@ -268,6 +268,13 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
                 )}
                 <button type="submit">Crear cuenta</button>
               </form>
+            )}
+
+            {isMobile && (
+              <div className="toggle-auth" onClick={toggleMode}>
+                <p>{isSignIn ? '¿No tienes una cuenta?' : '¿Ya tienes una cuenta?'}</p>
+                <button>{isSignIn ? 'Crear cuenta' : 'Iniciar sesión'}</button>
+              </div>
             )}
           </div>
         </div>

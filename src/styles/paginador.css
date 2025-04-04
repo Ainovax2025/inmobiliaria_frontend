@@ -37,3 +37,9 @@
     opacity: 0.5;
   }
   
+
+  @media screen and (max-width: 900px) {
+    .paginador {
+      margin-top: 0px;
+    } 
+  }

@@ -2,7 +2,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    padding: 75px 0px 0px 0px;
+    padding: 35px 0px 0px 0px;
 }
 .ContainerCardsPropiedades{
     display: grid;
@@ -34,7 +34,7 @@
     }
     .ContainerPropiedades{
         padding: 0px;
-        padding-top: 50px !important;
+        /* padding-top: 50px !important; */
         padding-bottom: 120px;
         gap: 41px;
         

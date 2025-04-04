@@ -4,7 +4,7 @@
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .post-container {
-    max-width: 350px;
+    max-width: 50%;
     border: 1px solid #ccc;
     border-radius: 52px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -113,3 +113,11 @@
     border-radius: 18px;
     top: -10px;
   }
+
+
+  @media screen and (max-width: 900px) {
+
+  .post-container {
+    max-width: 90%;
+  }
+}

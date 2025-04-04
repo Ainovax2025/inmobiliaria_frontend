@@ -1,14 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import styles from "../../styles/propiedadDetalle.css";
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // 🔥 Para obtener el ID de la URL
-import CarouselCard from "../../components/carouselCard.jsx";
-import LoadingSpinner from "../../components/spinner.jsx";
-import { FaRuler, FaBed, FaBath, FaWhatsapp } from "react-icons/fa";
-import {} from "react-icons/fa";
-import getAmenityIcon from "../../components/amenidades.jsx";
-import agentPlaceholder from "../../assets/wallpapers/Agent2.jpg";
-import GoBack from "../../components/navGoback.jsx";
+import styles from '../../styles/propiedadDetalle.css';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // 🔥 Para obtener el ID de la URL
+import CarouselCard from '../../components/carouselCard.jsx';
+import LoadingSpinner from '../../components/spinner.jsx';
+import { FaRuler, FaBed, FaBath, FaWhatsapp } from 'react-icons/fa';
+import {} from 'react-icons/fa';
+import getAmenityIcon from '../../components/amenidades.jsx';
+import agentPlaceholder from '../../assets/wallpapers/Agent2.jpg';
+import GoBack from '../../components/navGoback.jsx';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -21,22 +21,19 @@ const PropiedadDetalle = () => {
     const obtenerPropiedadById = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          `${BASE_URL}/marketplace/propiedadById/${id}`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/marketplace/propiedadById/${id}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
 
         if (!response.ok) {
-          throw new Error("Error en la obtención de la propiedad");
+          throw new Error('Error en la obtención de la propiedad');
         }
 
         const data = await response.json();
         setPropiedad(data);
       } catch (error) {
-        console.error("Error en la obtención:", error);
+        console.error('Error en la obtención:', error);
       } finally {
         setLoading(false);
       }
@@ -56,9 +53,7 @@ const PropiedadDetalle = () => {
             ) : (
               <>
                 <CarouselCard images={propiedad.imagenes} />
-                <span className="spanTipoOperacionMobile">
-                  {propiedad.tipooperacion}
-                </span>
+                <span className="spanTipoOperacionMobile">{propiedad.tipooperacion}</span>
               </>
             )}
           </section>
@@ -69,30 +64,28 @@ const PropiedadDetalle = () => {
               <>
                 <div className="ContainerInfoPropiedad">
                   <h2 className="precioPropiedadMobile">
-                    {" "}
-                    {new Intl.NumberFormat("es-CO", {
-                      style: "currency",
-                      currency: "COP",
+                    {' '}
+                    {new Intl.NumberFormat('es-CO', {
+                      style: 'currency',
+                      currency: 'COP',
                       minimumFractionDigits: 0,
-                      maximumFractionDigits: 0,
+                      maximumFractionDigits: 0
                     }).format(propiedad.precio)}
-                    {propiedad.tipooperacion === "Venta" ? "" : "/mes"}
+                    {propiedad.tipooperacion === 'Venta' ? '' : '/mes'}
                   </h2>
 
-                  <h1 className="tituloPropiedad">
-                    Moderno apartamento en la ciudad
-                  </h1>
+                  <h1 className="tituloPropiedad">{propiedad.titulo}</h1>
                   <p className="ubicacionPropiedad">
                     {propiedad.ciudad}, {propiedad.direccion}
                   </p>
                   <div className="ContainerPrice">
                     <h2 className="precioPropiedad">
-                      {" "}
-                      {new Intl.NumberFormat("es-CO", {
-                        style: "currency",
-                        currency: "COP",
+                      {' '}
+                      {new Intl.NumberFormat('es-CO', {
+                        style: 'currency',
+                        currency: 'COP',
                         minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
+                        maximumFractionDigits: 0
                       }).format(propiedad.precio)}
                       /mes
                     </h2>
@@ -102,13 +95,11 @@ const PropiedadDetalle = () => {
                   <div className="detallesPropiedad">
                     <span>
                       <FaBed /> {propiedad.habitaciones}
-                      {propiedad.habitaciones === 1
-                        ? " habitación"
-                        : " habitaciones"}
+                      {propiedad.habitaciones === 1 ? ' habitación' : ' habitaciones'}
                     </span>
                     <span>
                       <FaBath /> {propiedad.banos}
-                      {propiedad.banos === 1 ? " baño" : " baños"}
+                      {propiedad.banos === 1 ? ' baño' : ' baños'}
                     </span>
 
                     <span>
@@ -117,9 +108,7 @@ const PropiedadDetalle = () => {
                   </div>
                   <div className="Containerdescripcion">
                     <h3>Caracteristicas</h3>
-                    <p className="descripcionPropiedad">
-                      {propiedad.descripcion}
-                    </p>
+                    <p className="descripcionPropiedad">{propiedad.descripcion}</p>
                   </div>
                   {propiedad.amenidades.length > 0 && (
                     <div className="ContainerAmenidades">
@@ -140,17 +129,12 @@ const PropiedadDetalle = () => {
                     <div className="agentCard">
                       <div
                         style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "10px",
-                        }}
-                      >
-                        <img
-                          src={agentPlaceholder}
-                          alt="Agente John Smith"
-                          className="agentImage"
-                        />
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '10px'
+                        }}>
+                        <img src={agentPlaceholder} alt="Agente John Smith" className="agentImage" />
                         <div className="agentInfo">
                           <h3 className="agentName">David Montero</h3>
                           <p className="agentTitle">Agente inmobiliario</p>

@@ -17,8 +17,9 @@
     padding: 9px 26px;
     border-radius: 7px;
     border: 2px solid #bbbfc2;
-    background: #cfd3dc;
-    color: #5d6168;
+    background: white;
+    color: #5d6244;
+    font-weight: 700;
 }
 
 
@@ -44,8 +45,9 @@
     padding: 10px 0px 10px 5px;
     border-radius: 7px;
     border: 2px solid #bbbfc2;
-    background: #cfd3dc;
-    color: #5d6168;
+    background: white;
+    color: #5d6244;
+    font-weight: 700;
 }
 
 

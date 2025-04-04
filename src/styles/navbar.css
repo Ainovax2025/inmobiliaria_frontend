@@ -14,7 +14,7 @@ body{
     right: 0;
     z-index: 10;
   }
-  
+
   .navbar-left {
     display: flex;
     align-items: center;
@@ -120,6 +120,111 @@ body{
     margin: 0px;
     font-weight: 300;
 
+  }
+
+
+
+
+  
+  .navbar-mobile {
+    display: flex;
+    align-items: center;
+    background-color: #3f4035;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 43px;
+    justify-content: space-between;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    bottom: 0;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .navbar-menu-mobile {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-menu-mobile a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .navbar-menu-mobile li {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    border-radius: 50%;
+    color: white;
+  }
+
+  .navbar-menu-mobile li span{
+    font-size: 0.5rem;
+    color: white;
+  }
+  
+
+  .bottom-slide-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .bottom-slide-menu {
+    background-color: #3f4035;
+    color: white;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    animation: slideUp 0.3s ease-out;
+    z-index: 999;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .bottom-menu-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .bottom-menu-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .bottom-menu-list li a {
+    color: white;
+    text-decoration: none;
   }
   
 @media screen and (max-width: 1200px) {
