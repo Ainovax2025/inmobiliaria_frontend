@@ -1,5 +1,5 @@
 .property-card {
-    width: 402px;
+    width: 350px;
     background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
@@ -10,7 +10,7 @@
   .property-image-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 60%;
     background-color: #e2e8f0;
   }
   
@@ -24,7 +24,7 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #000;
+    background-color: #464942;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
@@ -34,28 +34,33 @@
   
   .property-info {
     padding: 16px;
+    background-color:#d3dcdc;
+    height: 40%;
   }
   
   .property-price {
     font-size: 20px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 4px;
-  }
+    color: black;
+    margin: 10px 0px;
+    }
   
   .property-title {
     font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-  }
+    color: black;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
   
   .property-details {
     display: flex;
     gap: 16px;
     font-size: 14px;
-    color: #777;
-    margin-bottom: 8px;
-  }
+    color:black ;
+    margin: 10px 0px;
+    }
   .property-details  span {
     display: flex;
     justify-content: center;
@@ -67,5 +72,21 @@
   .property-location {
     font-size: 14px;
     color: #888;
+    margin: 10px 0px;
+  }
+  .property-title button{
+    padding: 9px 26px;
+    border-radius: 7px;
+    border: 2px solid #5d6244;
+    background: #5d6244;
+    color: white;
   }
   
+
+  @media screen and (max-width: 420px) {
+    
+    .property-card{
+      width: 360px;
+    }
+}
+

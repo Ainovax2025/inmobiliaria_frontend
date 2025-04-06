@@ -1,0 +1,211 @@
+.containerCreadorPropiedades{
+    padding: 2vw 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-auto-rows: auto;
+    gap: 8px;
+    width: 100%;
+}
+
+.infoPropiedadCard,  .EspecificacionesCard , .ubicacionCard {
+    border-radius: 10px;
+    padding: 20px;
+    margin:0px;
+    place-content: center; 
+}
+.ImagenesCard , .AmenidadesCard, .ContactoCard{
+    border-radius: 10px;
+    padding: 20px;
+    margin:0px;
+}
+
+.infoPropiedadCard {
+    grid-row: span 2 / span 2;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.containerCreadorPropiedades h4{
+    margin: 0px;
+    
+}
+
+.EspecificacionesCard {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.ubicacionCard {
+    grid-column-start: 2;
+    grid-row-start: 3;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ImagenesCard {
+    grid-row: span 1 / span 1;
+    grid-column-start: 1;
+    grid-row-start: 4;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.AmenidadesCard {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ContactoCard {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+.infoPropiedad{
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.infoPropiedadContainer{
+    display: flex;
+        flex-direction: column;
+        gap: 10px;
+}
+
+.infoPropiedad div, .Descripcion div, .Especificaciones div{
+    display: flex;
+    flex-direction: column;
+}
+.infoPropiedad label, .Descripcion label, .ubicacionCard label, .ContactoCard label, .Especificaciones label{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 5px;
+}
+.Area, .Banos, .Habitaciones, .Antiguedad{
+    width: 33%;
+    display: flex;
+}
+
+
+.infoPropiedad select , .Especificaciones select{
+    padding: 9px 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.DescripcionTextArea{
+    height: 100px;
+    padding: 9px 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+.Especificaciones{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 0px;
+}
+.Especificaciones input{
+    max-width: 5vw;
+
+}
+.Especificaciones labes{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.CiudadInput, .BarrioInput{
+    width: 100%;
+    box-sizing: border-box;
+}
+.listAmenidad{
+    border: 1px solid #3f4035;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+.containerListAmenidades{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.amenidadActive {
+    background-color: #3f4035;
+    color: white;
+    transition: all 0.2s ease-in-out;
+  }
+
+.btnCrearPropiedad{
+    padding: 9px 26px;
+    border-radius: 7px;
+    border: 2px solid #5d6244;
+    background: #5d6244;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.ContactoInputs, .ubicacionInputs{
+    display: flex;
+    gap:10px;
+    
+}
+.ContactoInputs div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+@media screen and (max-width: 900px) {
+    .parent{    
+        display: flex;
+        flex-direction: column;
+    }
+    .infoPropiedad{
+        display: block;
+    }
+    .Especificaciones{
+        display: block;
+    }
+    .containerCreadorPropiedades{
+        padding: 5vw;
+        padding-bottom: 20vw;
+    }
+    .Especificaciones input{
+        max-width: 100%;
+    }
+    .ContactoInputs{
+        flex-direction: column;
+    }
+    .ContactoInputs div{
+        display: flex;
+        flex-direction: column;
+    }
+    .infoPropiedad div, .Especificaciones div {
+        padding: 3px 0px;  
+    }
+    .ubicacionInputs{
+        display: flex;
+        flex-direction: column;
+    }
+}

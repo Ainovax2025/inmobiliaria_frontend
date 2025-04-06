@@ -1,182 +1,250 @@
-/* 📌 Estilos generales del Navbar */
+body{
+  display: block;
+}
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #3E5632; /* 🔥 Verde más claro */
-  padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  height: 65px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+    display: flex;
+    align-items: center;
+    background-color: #3f4035;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 50px;
+    justify-content: space-between;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+  }
 
-/* 📌 Estilos del logo */
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
+  .navbar-left {
+    display: flex;
+    align-items: center;
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  text-decoration: none;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #F4E1C1; /* ✨ Dorado suave */
-  transition: color 0.3s ease-in-out;
-}
-
-.logo:hover {
-  color: #9EC63D; /* 🔥 Verde claro en hover */
-}
-
-/* 📌 Menú principal */
-.navbar-menu {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  margin: 0 auto; /* Centra horizontalmente */
-  padding: 0;
-}
-
-.navbar-menu li {
-  position: relative;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-  color: #F4E1C1; /* ✨ Letras en dorado suave */
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: color 0.3s ease-in-out;
-}
-
-.navbar-menu a:hover {
-  color: #9EC63D; /* 🔥 Verde claro */
-}
-
-/* 📌 Estilo del menú hamburguesa */
-.menu-icon {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #3E5632;
-  position: absolute;
-  right: 30px; /* 🔹 Ajusta la distancia desde el borde derecho */
-  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  }
   
-  /* 🔥 Diseño en círculo como botón */
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #F4E1C1; /* 🎨 Color de fondo sólido */
-  border: 2px solid #9EC63D; /* 🌿 Borde verde claro */
-  position: relative;
-  overflow: hidden;
-}
-
-.menu-icon::before {
-  content: '\2630'; /* ☰ Icono de menú */
-  font-size: 1.8rem;
-  position: absolute;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* 📌 Efecto hover mejorado */
-.menu-icon:hover {
-  transform: scale(1.1);
-  background: #9EC63D;
-  color: #3E5632;
-}
-
-/* 📌 Ubicación en la esquina derecha */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: absolute;
-  right: 20px;
-}
-
-/* 📌 Contenedor del menú hamburguesa */
-.mobile-menu {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 65px;
-  left: 0;
-  width: 100%;
-  background: rgba(62, 86, 50, 0.95); /* 🔥 Fondo con opacidad para mejor efecto */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  padding: 15px 0;
-  text-align: center;
-  transform: translateY(-100%);
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.mobile-menu.active {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-/* 📌 Estilo de los enlaces en el menú móvil */
-.mobile-menu a {
-  padding: 12px 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #F4E1C1;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-.mobile-menu a:hover {
-  color: #9EC63D;
-}
-
-/* 📌 Icono de usuario */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.user-menu {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.user-menu i {
-  font-size: 1.2rem;
-  color: #F4E1C1;
-  transition: color 0.3s ease-in-out;
-}
-
-.user-menu i:hover {
-  color: #9EC63D;
-}
-
-/* 📌 RESPONSIVIDAD PARA PANTALLAS PEQUEÑAS */
-@media screen and (max-width: 900px) {
+  .logo {
+    display: flex;
+    gap:7px;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .logo-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
   .navbar-menu {
-      display: none;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .navbar-menu li {
+    position: relative;
+  }
+  
+  .navbar-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .navbar-menu a:hover {
+    color: #5d6244;
+  }
+  
+  .dropdown-icon {
+    font-size: 0.8rem;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .user-menu button{
+    padding: 9px 26px;
+    border-radius: 7px;
+    border: 2px solid #5d6244;
+    background: #5d6244;
+    color: white;
+  }
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .agentImageLogout{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
-  .menu-icon {
-      display: flex;
+  .ContainerCardLogOut{
+    color: white;
+    text-align: end;
   }
+
+  .ContainerCardLogOut h4{
+    margin: 0px;
+    font-weight: 300;
+
+  }
+  
+  .ContainerCardLogOut h5{
+    margin: 0px;
+    font-weight: 300;
+
+  }
+
+
+
+
+  
+  .navbar-mobile {
+    display: flex;
+    align-items: center;
+    background-color: #3f4035;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 43px;
+    justify-content: space-between;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    bottom: 0;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .navbar-menu-mobile {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-menu-mobile a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .navbar-menu-mobile li {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    border-radius: 50%;
+    color: white;
+  }
+
+  .navbar-menu-mobile li span{
+    font-size: 0.5rem;
+    color: white;
+  }
+  
+
+  .bottom-slide-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .bottom-slide-menu {
+    background-color: #3f4035;
+    color: white;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    animation: slideUp 0.3s ease-out;
+    z-index: 999;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .bottom-menu-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .bottom-menu-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .bottom-menu-list li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+@media screen and (max-width: 1200px) {
+  .navbar{
+    justify-content: center;
+  }
+  .navbar-left, .navbar-right{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar{
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+  }
+
 }

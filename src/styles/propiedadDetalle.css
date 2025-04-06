@@ -1,0 +1,288 @@
+.containerPD {
+    padding-top: 4vh;
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerPropiedadeDetalle {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.containerCarousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.ContainerInfoPropiedad{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 60%;
+}
+.ContainerFormContacto{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 35%;
+}
+.tituloPropiedad {
+    font-size: 1vw;
+    color: #373a32;
+    margin: 0px;
+}
+
+.ubicacionPropiedad {
+    font-size: 0.8vw;
+    color: gray;
+    margin: 0;
+}
+
+.precioPropiedad {
+    font-size: 1vw;
+    color: #373a32;
+    margin: 0;
+}
+
+.detallesPropiedad {
+    display: flex;
+    gap: 15px;
+    font-size: 16px;
+    justify-content: space-between;
+    margin-right: 90px;
+}
+.detallesPropiedad span{
+    color: #374151;
+}
+
+.descripcionPropiedad {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.amenidadesPropiedad {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 10px 30px; /* Espaciado entre filas y columnas */
+    align-items: center;
+    padding: 10px 0;
+}
+
+.amenidadItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #374151;
+    text-align: center;
+}
+.ContainerAmenidades h3{
+    color: #373a39;
+}
+
+.formContacto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #d3dcdc;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+
+.formContacto input,
+.formContacto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.formContacto textarea {
+    height: 150px;
+}
+
+.formContacto button {
+    background-color: #5d6244;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.formContacto button:hover {
+    background-color: #0073e6;
+}
+
+.ContainerPrice{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin: 12px 0px;
+}
+.ContainerPrice span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3f4035ba;
+    padding: 8px 17px;
+    border-radius: 15px;
+    color: white;
+    font-size: 11px;
+}
+.Containerdescripcion p {
+    color: #686a64;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+
+}
+.Containerdescripcion h3{
+    color:#373a39;
+}
+
+
+.agentCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.agentImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover; 
+}
+
+.agentInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.agentName {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.agentTitle {
+    font-size: 14px;
+    color: #4b5563;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.defaultIcon{
+    color: black;
+    display: block;
+    font-size: 40px;
+    border-radius: 25px;
+    padding: 2px;
+}
+
+.precioPropiedadMobile{
+    display: none;
+    font-size: 22px;
+    color: #373a32;
+    margin: 0;
+}
+.spanTipoOperacionMobile{
+    position: absolute;
+    top: 65px;
+    left: 11px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: #3f4035ba;
+    padding: 8px;
+    border-radius: 15px;
+    color: white;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .spanTipoOperacionMobile{
+        display: flex;
+    }
+
+    .precioPropiedadMobile{
+        display: block;
+    }
+    .containerPD{
+        padding: 0px;
+        padding-top: 55px;
+    }
+    .containerPropiedadeDetalle{
+        width: 100vw;
+    }
+    .infoContainer{
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+        padding-top: 0px;
+    }
+    .ContainerInfoPropiedad, .ContainerFormContacto{
+        width: 100%;
+    }
+    .ContainerFormContacto{
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+    .ContainerInfoPropiedad{
+        gap:10px;
+        padding-bottom: 20px;
+    }
+    .tituloPropiedad{
+        font-size: 19px;
+    }
+    .ubicacionPropiedad{
+        font-size: 17px;
+    }
+    .ContainerPrice{
+        margin:0px
+    }
+    .precioPropiedad{
+        display: none;
+    }
+    .ContainerPrice span{
+        display: none;
+    }
+    .detallesPropiedad{
+        margin-right: 0px;
+        margin-right: 0px;
+        border: 2px solid #e5e7eb;
+        border-left: none;
+        border-right: none;
+        padding: 20px 0px;
+    }
+    .detallesPropiedad span{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .Containerdescripcion h3{
+        margin:0px;
+    }
+
+}

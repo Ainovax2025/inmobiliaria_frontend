@@ -1,0 +1,251 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+  }
+  
+  /* Botón de abrir modal */
+  .open-modal-btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    background: #2ab69f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .open-modal-btn:hover {
+    background: #238a7e;
+  }
+
+  .containerParts{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 15px;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+  .left-panel {
+    transform: translateX(0%);
+  }
+  
+  .right-panel {
+    transform: translateX(0%);
+    padding: 90px;
+    width: 60%;
+  }
+  
+  .sign-up .left-panel {
+    transform: translateX(-65%);
+  }
+  
+  .sign-up .right-panel {
+    transform: translateX(151%);
+  }
+
+  .switch-mode span {
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .switch-mode span:hover {
+    text-decoration: underline;
+  }
+  .ContainerSignUp{
+    width: 100%;
+  }
+
+  .containerParts img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+  }
+  /* Fondo oscurecido */
+  .modal-overlay {
+    z-index: 11;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55svw;
+    height: 600px;
+    border-radius: 15px;
+  }
+  .error {
+    color: red;
+    font-size: 12px;
+    margin:0px;
+    margin-top: 5px;
+    text-align: start;
+  }
+  .ContainerText{
+    color: white;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  }
+
+  .ContainerText h2 {
+
+    font-size: 30px;
+    margin: 0px;
+  }
+  .ContainerInputFrom{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .ContainerInputFrom svg{
+    background: #5d6244;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 0px 0px 5px;
+    height: 100%;
+  }
+  .ContainerInputFrom input{
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+
+  }
+  .ContainerText p{
+    margin: 16px 0px;
+  }
+  /* Botón de cerrar */
+  .close-btn {
+    color: white;
+    position: absolute;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 2;
+    background: #5d6244;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin: 13px;
+    top: 0;
+    right: 0;
+  }
+
+  .modal-header h2{
+    color: #5d6244;
+    font-size: 30px;
+    margin: 50px;
+  }
+  
+  /* Formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modal-overlay button {
+    padding: 10px;
+    background: #5d6244;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+  
+  .modal-overlay button:hover {
+    background: #888678;
+    color: white;
+    border: 1px solid #888678;
+    border-radius: 5px;
+    
+  }
+  
+  /* Cambiar entre Login y Registro */
+  .switch-mode p {
+    margin-top: 10px;
+  }
+  
+  .switch-mode span {
+    color: #2ab69f;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .switch-mode span:hover {
+    text-decoration: underline;
+  }
+
+  .toggle-auth{
+    padding: 47px;
+  }
+  .toggle-auth p {
+    margin: 0px;
+    font-size: 11px;
+  }
+  .toggle-auth button{
+    font-size: 9px;
+  }
+  
+
+  @media screen and (max-width: 900px) {
+    .sign-up .left-panel {
+      transform: translateX(0);
+  }
+  
+
+    .hide-right.right-panel {
+      display: none !important;
+    }
+  
+    .hide-left.left-panel {
+      display: none !important;
+    }
+    .right-panel {
+      padding: 0px;
+      width: 100%;
+    }
+    .modal-content{
+      width: 90%;
+      height: 60dvh;
+    }
+    .ContainerSignUp{
+      width: 100%;
+      padding: 7vw;
+    }
+  }
