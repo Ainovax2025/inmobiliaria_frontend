@@ -5,7 +5,19 @@ import React from 'react';
 import { FaRuler, FaBed,FaBath  } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
+//=============================================
 
+import 'animate.css';
+
+const Nav = () => {
+  return (
+    <nav className="animate__animated animate__fadeInDown">
+      <h1>Mi Navegación</h1>
+    </nav>
+  );
+};
+
+//=============================================
 
 const PropiedadCard = ({
   imageUrl,

@@ -1,0 +1,45 @@
+.social-buttons {
+    position: fixed; /* ✅ Siempre visible */
+    right: 20px; /* ✅ Pegado al lado derecho */
+    bottom: 20px; /* ✅ Pegado a la parte inferior */
+    transform: translateY(-0%); /* ✅ Ajusta el centro */
+    display: flex;
+    flex-direction: column; /* ✅ Los pone en vertical */
+    gap: 15px; /* ✅ Espacio entre botones */
+    z-index: 1000; /* ✅ Se mantiene por encima de otros elementos */
+  }
+  
+  .social-buttons a {
+    background-color: transparent; /* ✅ Fondo negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* ✅ Tamaño más grande */
+    height: 60px; /* ✅ Tamaño más grande */
+    border-radius: 50%; /* ✅ Forma circular */
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ✅ Transiciones suaves */
+  }
+  
+
+  .social-buttons a:hover {
+    transform: scale(1.2); /* ✅ Efecto de agrandamiento */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* ✅ Resplandor al pasar el mouse */
+  }
+  
+  .social-buttons a svg {
+    color: #F4E1C1; /* ✅ Color de los íconos */
+    font-size: 30px; /* ✅ Aumentamos el tamaño */
+  }
+  
+
+
+  .social-buttons.tema-claro a svg {
+    color: #2C3A24; /* Verde oscuro u otro para contraste */
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  }
+  
+  .social-buttons.tema-claro a:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  

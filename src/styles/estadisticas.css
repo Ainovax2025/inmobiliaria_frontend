@@ -1,0 +1,86 @@
+/* 🔹 Contenedor principal de estadísticas */
+.estadisticas-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0px auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  color: #333;
+  text-align: center;
+  border-radius: 0px;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* 🔹 Estilo de cada estadística */
+.estadistica {
+  flex: 1 1 22%; /* ✅ permite que haya 4 por fila si cabe */
+  min-width: 160px;
+  max-width: 240px;
+  text-align: center;
+  padding: 12px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease-in-out;
+}
+
+/* 🔹 Animación escalonada */
+.estadistica:nth-child(1) { animation: slideIn 1s ease-out forwards 0.2s; }
+.estadistica:nth-child(2) { animation: slideIn 1s ease-out forwards 0.4s; }
+.estadistica:nth-child(3) { animation: slideIn 1s ease-out forwards 0.6s; }
+.estadistica:nth-child(4) { animation: slideIn 1s ease-out forwards 0.8s; }
+
+/* 🔹 Efecto hover */
+.estadistica:hover {
+  transform: scale(1.07) translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔹 Número */
+.estadistica h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2C3A24;
+}
+
+/* 🔹 Texto */
+.estadistica p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* 🔹 Responsivo */
+@media (max-width: 992px) {
+  .estadistica {
+    flex: 1 1 45%; /* ✅ 2 por fila */
+  }
+}
+
+@media (max-width: 600px) {
+  .estadistica {
+    flex: 1 1 100%; /* ✅ 1 por fila */
+  }
+}
+
+/* 🔹 Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

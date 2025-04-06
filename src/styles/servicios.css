@@ -1,0 +1,102 @@
+/* 🔹 Contenedor de Servicios */
+.servicios-container {
+    width: 100%; /* ✅ más ancho para permitir más tarjetas */
+    padding: 50px 20px; /* ✅ menos padding */
+    margin: 0 auto; /* ✅ centrado */
+    background-color: rgba(44, 58, 36, 0.92);
+    font-family: 'Playfair Display', serif;
+    color: #F4E1C1;
+    text-align: center;
+}
+
+
+/* 🔹 Título */
+.servicios-title {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #F4E1C1;
+}
+
+/* 🔹 Subtítulo */
+.servicios-subtitle {
+    font-size: 1.2rem;
+    color: #D5C5A0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* 🔹 Contenedor de las tarjetas */
+.servicios-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 100%; /* ✅ permite todo el ancho disponible */
+}
+
+
+/* 🔹 Tarjetas */
+.servicio-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 30px;
+    border-radius: 0px;
+    border-left: 4px solid #F4E1C1;
+    width: 130px; /* 🔹 Ajusté el ancho */
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-size: 1rem;
+}
+
+.servicio-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* 🔹 Contenido desplegable */
+.servicio-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.25s ease;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    padding-top: 8px;
+    color: #D5C5A0;
+}
+
+/* 🔹 Mostrar contenido */
+.servicio-item.active .servicio-content {
+    max-height: 100px;
+    opacity: 1;
+}
+
+
+/* 🔹 Logo en cada tarjeta */
+.servicio-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  
+  .servicio-logo svg {
+    color: #F4E1C1;
+    font-size: 30px;
+  }
+  
+
+
+
+/* 🔹 Responsive */
+@media (max-width: 768px) {
+    .servicios-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .servicio-item {
+        width: 45%; /* 🔹 Ajusta para que haya dos elementos por fila */
+    }
+}
