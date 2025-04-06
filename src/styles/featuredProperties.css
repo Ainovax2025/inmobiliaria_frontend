@@ -1,0 +1,240 @@
+/* Contenedor principal */
+.featured-container {
+    width: 80vw;
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    position: relative; /* Necesario para las flechas de navegación */
+}
+
+/* Contenedor de tarjetas con SCROLL HORIZONTAL en pantallas pequeñas */
+.properties-wrapper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+
+/* Ocultar la barra de desplazamiento en Chrome/Safari */
+.properties-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tarjeta de propiedad */
+.property-card {
+    flex: 0 0 300px;
+    max-width: 320px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+/* 🔹 Nuevo efecto de hover con ampliación más visible */
+.property-card:hover {
+    transform: scale(1.08); /* 🔥 Se amplía un poco más */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* 🌟 Sombra más pronunciada */
+}
+
+/* Imagen */
+.property-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* 🔹 Sutil animación en la imagen al hacer hover */
+.property-card:hover .property-image {
+    transform: scale(1.05);
+}
+
+
+/* Información de la propiedad */
+.property-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.property-info h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 📌 Ajuste de la información */
+.property-info p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* 📌 Descripción */
+.property-description {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.3;
+}
+
+/* 📌 Botón */
+.book-button {
+    display: block;
+    width: 100%;
+    background-color: #556B2F;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.book-button:hover {
+    background-color: #6B8E23;
+}
+
+/* 🔹 Botones de navegación 🔹 */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: 0.3s ease;
+}
+
+.scroll-button.left {
+    left: -30px;
+}
+
+.scroll-button.right {
+    right: -30px;
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 🔹 Encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* 🔹 Título principal */
+.header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2C3A24; /* ✅ Verde oliva oscuro */
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* 🔹 Enlace "Ver todas →" */
+.view-more {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6B8E23; /* ✅ Verde oliva más vibrante */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* 🔹 Subrayado animado en el enlace */
+.view-more::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #6B8E23;
+    bottom: -3px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🔹 Efecto hover */
+.view-more:hover {
+    color: #556B2F; /* ✅ Verde oliva oscuro */
+}
+
+.view-more:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* 🔹 Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* 🔹 RESPONSIVIDAD MEJORADA 🔹 */
+@media (max-width: 1200px) {
+    .properties-wrapper {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    .property-card {
+        flex: 0 0 280px;
+    }
+}
+
+@media (max-width: 900px) {
+    .properties-wrapper {
+        overflow-x: scroll;
+    }
+    .property-card {
+        flex: 0 0 270px;
+    }
+}
+
+@media (max-width: 600px) {
+    .properties-wrapper {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .property-card {
+        flex: 0 0 250px;
+    }
+}
