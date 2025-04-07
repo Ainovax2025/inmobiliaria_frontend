@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaRobot } from "react-icons/fa";
-import "../styles/socialButtons.css";
+import React, { useEffect, useState } from 'react';
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaRobot } from 'react-icons/fa';
+import '../styles/socialButtons.css';
 
 const SocialButtons = () => {
   const [temaClaro, setTemaClaro] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             const clase = entry.target.className;
-            if (clase.includes("seccion-clara")) {
+            if (clase.includes('seccion-clara')) {
               setTemaClaro(true);
-            } else if (clase.includes("seccion-oscura")) {
+            } else if (clase.includes('seccion-oscura')) {
               setTemaClaro(false);
             }
           }
@@ -22,14 +22,14 @@ const SocialButtons = () => {
       { threshold: 0.3 }
     );
 
-    const secciones = document.querySelectorAll(".seccion-clara, .seccion-oscura");
-    secciones.forEach((seccion) => observer.observe(seccion));
+    const secciones = document.querySelectorAll('.seccion-clara, .seccion-oscura');
+    secciones.forEach(seccion => observer.observe(seccion));
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className={`social-buttons ${temaClaro ? "tema-claro" : ""}`}>
+    <div className={`social-buttons ${temaClaro ? 'tema-claro' : 'tema-claro'}`}>
       <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="social-button">
         <FaWhatsapp />
       </a>

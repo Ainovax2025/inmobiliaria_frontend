@@ -1,5 +1,5 @@
-import React from "react";
-import "../styles/estadisticas.css"; // ✅ Asegurar importación correcta
+import React from 'react';
+import '../styles/estadisticas.css'; // ✅ Asegurar importación correcta
 
 const Estadisticas = () => {
   return (
@@ -9,11 +9,7 @@ const Estadisticas = () => {
         <p>Ventas de Apartamentos</p>
       </div>
       <div className="estadistica">
-        <h2>---+</h2>
-        <p>tiempo record en venta de Apartamentos</p>
-      </div>
-      <div className="estadistica">
-        <h2>***+</h2>
+        <h2>5+</h2>
         <p>años de experiencia</p>
       </div>
       <div className="estadistica">

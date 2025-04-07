@@ -1,23 +1,26 @@
 /* Contenedor principal */
 .featured-container {
-    width: 80vw;
-    max-width: 1400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    position: relative; /* Necesario para las flechas de navegación */
+    padding: 6vh 10vw; 
+    background-color: #e5e4e0;
 }
-
+.featured-container h2 {
+    color: #393f3a;
+    font-size: 2.3rem;
+    margin: 0px;
+}
+.featured-container p{
+    color:#7f7a74;
+    font-size: 1.2rem;
+    margin: 0px;
+    margin-top: 2vh;
+}
 /* Contenedor de tarjetas con SCROLL HORIZONTAL en pantallas pequeñas */
 .properties-wrapper {
     display: flex;
     gap: 20px;
     width: 100%;
-    justify-content: flex-start;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 10px;
-    scrollbar-width: none;
+    justify-content: space-between;
+    padding: 6vh 0px;
 }
 
 /* Ocultar la barra de desplazamiento en Chrome/Safari */
@@ -26,22 +29,18 @@
 }
 
 /* Tarjeta de propiedad */
-.property-card {
-    flex: 0 0 300px;
-    max-width: 320px;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.property-card-home {
     display: flex;
     flex-direction: column;
+    width: 30%;
+    box-sizing: border-box;
+    /* transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;    */
 }
-/* 🔹 Nuevo efecto de hover con ampliación más visible */
-.property-card:hover {
-    transform: scale(1.08); /* 🔥 Se amplía un poco más */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* 🌟 Sombra más pronunciada */
+
+.property-image-home{
+    border-radius: 15px;
+    height: 60%;
+    object-fit: cover;
 }
 
 /* Imagen */
@@ -49,25 +48,18 @@
     width: 100%;
     height: 220px;
     object-fit: cover;
-    transition: transform 0.4s ease-in-out;
 }
 
-/* 🔹 Sutil animación en la imagen al hacer hover */
-.property-card:hover .property-image {
-    transform: scale(1.05);
-}
 
 
 /* Información de la propiedad */
-.property-info {
-    padding: 15px;
+.property-info-home {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
+    gap: 7px;
 }
 
-.property-info h3 {
+.property-info-home h3 {
     font-size: 1.2rem;
     font-weight: bold;
     color: #333;
@@ -75,7 +67,7 @@
 }
 
 /* 📌 Ajuste de la información */
-.property-info p {
+.property-info-home p {
     font-size: 1rem;
     color: #666;
     margin: 5px 0;
@@ -215,7 +207,7 @@
         overflow-x: auto;
         flex-wrap: nowrap;
     }
-    .property-card {
+    .property-card-home {
         flex: 0 0 280px;
     }
 }
@@ -224,7 +216,7 @@
     .properties-wrapper {
         overflow-x: scroll;
     }
-    .property-card {
+    .property-card-home {
         flex: 0 0 270px;
     }
 }
@@ -234,7 +226,7 @@
         overflow-x: scroll;
         white-space: nowrap;
     }
-    .property-card {
+    .property-card-home {
         flex: 0 0 250px;
     }
 }

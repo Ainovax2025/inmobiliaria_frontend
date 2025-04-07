@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 /* Estilos generales del cuerpo */
-body {
+.home-container body {
   background-image: url("../assets/background.jpg"); /* Imagen de fondo */
   background-size: cover;
   background-position: center;
@@ -14,7 +14,7 @@ body {
 }
 
 /* Filtro de oscurecimiento sobre la imagen de fondo */
-body::before {
+.home-container body::before {
   content: "";
   position: fixed;
   top: 0;

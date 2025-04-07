@@ -2,18 +2,10 @@
 .estadisticas-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1600px;
-  margin: 0px auto;
-  padding: 40px 20px;
-  background-color: #ffffff;
-  color: #333;
-  text-align: center;
-  border-radius: 0px;
+  padding: 6vh 17vw;
+  background-color: #3f4035;
+  color: white;
   gap: 20px;
-  opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
 }
 
@@ -35,24 +27,20 @@
 .estadistica:nth-child(3) { animation: slideIn 1s ease-out forwards 0.6s; }
 .estadistica:nth-child(4) { animation: slideIn 1s ease-out forwards 0.8s; }
 
-/* 🔹 Efecto hover */
-.estadistica:hover {
-  transform: scale(1.07) translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* 🔹 Número */
 .estadistica h2 {
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #2C3A24;
+  color: white;
 }
 
 /* 🔹 Texto */
 .estadistica p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 500;
+  color: #8e908e
+
+
 }
 
 /* 🔹 Responsivo */

@@ -1,29 +1,35 @@
 /* 🔹 Sección de Bienvenida */
 .bienvenida-container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  text-align: left;
-  background-color: rgba(44, 58, 36, 0.92);
-  font-family: 'Playfair Display', serif;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+}
+
+.home-container{
+  padding: 4vw 11vw;
+  background: #e5e4e0;
 }
 
 /* 🔹 Contenedor del texto */
 .bienvenida-content {
-  max-width: 50%;
-  padding-left: 5%;
+  width: 40%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
+.port-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  box-sizing: border-box;
+}
+
+
 /* 🔹 Estilo del título */
-.bienvenida-title {
+.bienvenida-text h1 {
   font-size: 3.8rem;
   font-weight: 700;
-  color: #F4E1C1;
+  color: #373a32;
   line-height: 1.2;
   margin-bottom: 15px;
   opacity: 1; /* Asegurar que el texto sea visible */
@@ -32,33 +38,27 @@
 }
 
 /* 🔹 Subtítulo */
-.bienvenida-subtitle {
+.bienvenida-text p {
   font-size: 1.4rem;
-  color: #D5C5A0;
+  color: #373a32;
   font-weight: 400;
-  font-style: italic;
   margin-bottom: 25px;
   opacity: 1; /* Evitar que desaparezca */
   animation: fadeInUp 2s cubic-bezier(0.25, 1, 0.5, 1);
-  animation-delay: 0.5s;
   font-family: 'Playfair Display', serif;
 }
 
 /* 🔹 Botones */
 .bienvenida-buttons button {
-  margin: 8px;
-  padding: 12px 30px;
+  padding: 18px 49px;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  border: 2px solid #F4E1C1;
-  background: transparent;
-  color: #F4E1C1;
+  background: #373a32;
+  color: white;
   transition: all 0.3s ease-in-out;
-  font-family: 'Inter', sans-serif;
   animation: fadeInScale 2.5s ease-out forwards;
-  animation-delay: 1s;
 }
 
 .bienvenida-buttons button:hover {
@@ -68,26 +68,16 @@
 }
 
 /* 🔹 Contenedor de la imagen */
-.port-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: auto;
-  padding-right: 5%;
-}
 
 /* 🔹 Imagen */
 .port-image {
-  width: 90%;
-  max-width: 450px; /* Limitar tamaño */
-  height: auto;
-  max-height: 450px; /* Evitar que se haga muy grande */
-  object-fit: contain; /* Mantener bordes redondeados */
+  width: 70%;
   border-radius: 15px;
-  opacity: 1; /* Asegurar que se vea */
+  opacity: 1;
   animation: fadeInScale 1.8s ease-out forwards;
   animation-delay: 0.5s;
+  object-fit: cover;
+  height: 60vh;
 }
 
 /* 🔹 Adaptación a móviles */

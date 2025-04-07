@@ -1,7 +1,7 @@
 .social-buttons {
     position: fixed; /* ✅ Siempre visible */
     right: 20px; /* ✅ Pegado al lado derecho */
-    bottom: 20px; /* ✅ Pegado a la parte inferior */
+    bottom: 33vh; /* ✅ Pegado a la parte inferior */
     transform: translateY(-0%); /* ✅ Ajusta el centro */
     display: flex;
     flex-direction: column; /* ✅ Los pone en vertical */
