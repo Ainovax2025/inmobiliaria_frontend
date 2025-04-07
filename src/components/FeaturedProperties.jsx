@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaRuler, FaBed, FaBath } from 'react-icons/fa';
+// import React, { useRef } from 'react';
+import { FaRuler, FaBed, FaBath } from 'react-icons/fa';
 
 import '../styles/featuredProperties.css';
 import property1 from '../assets/property1.jpg';
@@ -39,19 +39,19 @@ const properties = [
 ];
 
 // 🔹 Función para renderizar estrellas
-const renderStars = rating => {
-  const stars = [];
-  for (let i = 1; i <= 5; i++) {
-    if (i <= rating) {
-      stars.push(<FaStar key={i} className="star filled" />);
-    } else if (i - 0.5 === rating) {
-      stars.push(<FaStarHalfAlt key={i} className="star half" />);
-    } else {
-      stars.push(<FaRegStar key={i} className="star empty" />);
-    }
-  }
-  return stars;
-};
+// const renderStars = rating => {
+//   const stars = [];
+//   for (let i = 1; i <= 5; i++) {
+//     if (i <= rating) {
+//       stars.push(<FaStar key={i} className="star filled" />);
+//     } else if (i - 0.5 === rating) {
+//       stars.push(<FaStarHalfAlt key={i} className="star half" />);
+//     } else {
+//       stars.push(<FaRegStar key={i} className="star empty" />);
+//     }
+//   }
+//   return stars;
+// };
 
 const FeaturedProperties = () => {
   return (
