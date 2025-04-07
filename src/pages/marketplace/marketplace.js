@@ -83,8 +83,8 @@ const Marketplace = () => {
               status={propiedad.tipooperacion}
               price={propiedad.precio}
               tipo={propiedad.tipopropiedad}
-              bedrooms={propiedad.banos}
-              bathrooms={propiedad.habitaciones}
+              bedrooms={propiedad.habitaciones}
+              bathrooms={propiedad.banos}
               area={`${propiedad.area}`}
               location={`${propiedad.ciudad}, ${propiedad.direccion}`}
             />
