@@ -40,7 +40,7 @@ function Navbar() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     setUser(null);
-    window.location.href = '/';
+    window.location.href = '/inmobiliaria_frontend/#/marketplace';
   };
   return (
     <>
@@ -138,7 +138,11 @@ function Navbar() {
                     <Link to="/marketplace/crearPropiedad">Crear propiedad</Link>
                   </li>
 
-                  <li className="dropdown">
+                  <li
+                    className="dropdown"
+                    onClick={() => {
+                      setBottomMenuOpen(false);
+                    }}>
                     <Link to="/marketing">Marketing</Link>
                   </li>
                 </>

@@ -1,0 +1,74 @@
+/* 🔹 Contenedor principal de estadísticas */
+.estadisticas-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 6vh 17vw;
+  background-color: #3f4035;
+  color: white;
+  gap: 20px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* 🔹 Estilo de cada estadística */
+.estadistica {
+  flex: 1 1 22%; /* ✅ permite que haya 4 por fila si cabe */
+  min-width: 160px;
+  max-width: 240px;
+  text-align: center;
+  padding: 12px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease-in-out;
+}
+
+/* 🔹 Animación escalonada */
+.estadistica:nth-child(1) { animation: slideIn 1s ease-out forwards 0.2s; }
+.estadistica:nth-child(2) { animation: slideIn 1s ease-out forwards 0.4s; }
+.estadistica:nth-child(3) { animation: slideIn 1s ease-out forwards 0.6s; }
+.estadistica:nth-child(4) { animation: slideIn 1s ease-out forwards 0.8s; }
+
+.estadistica h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+/* 🔹 Texto */
+.estadistica p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #8e908e
+
+
+}
+
+/* 🔹 Responsivo */
+@media (max-width: 992px) {
+  .estadistica {
+    flex: 1 1 45%; /* ✅ 2 por fila */
+  }
+}
+
+@media (max-width: 600px) {
+  .estadistica {
+    flex: 1 1 100%; /* ✅ 1 por fila */
+  }
+}
+
+/* 🔹 Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
