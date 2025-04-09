@@ -6,14 +6,12 @@ const Servicios = () => {
   const servicios = [
     {
       titulo: 'Asesorías',
-      descripcion:
-        'Brindamos asesoría jurídica y contable (declaración de renta) en la compra o venta de una propiedad.',
+      descripcion: 'Asesoría jurídica y contable en compra o venta de propiedad.',
       icono: <FaBalanceScale />
     },
     {
       titulo: 'Venta',
-      descripcion:
-        'Realizamos avalúos, fotografía profesional, video publicitario y gestionamos todo el proceso de venta.',
+      descripcion: 'Avalúos, fotografía, video y gestión total del proceso de venta.',
       icono: <FaHome />
     },
     {
@@ -23,22 +21,22 @@ const Servicios = () => {
     },
     {
       titulo: 'Arriendos',
-      descripcion: 'Garantizamos el pago mensual del arriendo, incluso si el inquilino no paga.',
+      descripcion: 'Garantizamos pago mensual del arriendo aunque no pague el inquilino.',
       icono: <FaKey />
     },
     {
       titulo: 'Avalúos comerciales',
-      descripcion: 'Determinamos el valor real del inmueble según el mercado.',
+      descripcion: 'Determinamos valor real del inmueble con base en el mercado.',
       icono: <FaChartLine />
     },
     {
       titulo: 'Reparaciones locativas',
-      descripcion: 'Servicio de pintura, electricidad y plomería para propiedades.',
+      descripcion: 'Servicios de pintura, electricidad y plomería para propiedades.',
       icono: <FaTools />
     },
     {
       titulo: 'Aseo por horas',
-      descripcion: 'Ofrecemos servicio de limpieza flexible y por horas.',
+      descripcion: 'Ofrecemos servicio flexible de limpieza por horas en hogares.',
       icono: <FaBroom />
     }
   ];

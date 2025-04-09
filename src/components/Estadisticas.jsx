@@ -10,7 +10,7 @@ const Estadisticas = () => {
       </div>
       <div className="estadistica">
         <h2>5+</h2>
-        <p>años de experiencia</p>
+        <p>Años de experiencia</p>
       </div>
       <div className="estadistica">
         <h2>7504+</h2>

@@ -18,7 +18,7 @@
 
 .port-slide {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   width: 60%;
   box-sizing: border-box;
@@ -63,7 +63,7 @@
 
 .bienvenida-buttons button:hover {
   animation: buttonHover 0.6s ease-in-out;
-  background: #F4E1C1;
+  background: white;
   color: #2C3A24;
 }
 

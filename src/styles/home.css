@@ -3,7 +3,7 @@
 
 /* Estilos generales del cuerpo */
 .home-container body {
-  background-image: url("../assets/background.jpg"); /* Imagen de fondo */
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

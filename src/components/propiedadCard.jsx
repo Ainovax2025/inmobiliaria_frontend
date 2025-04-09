@@ -43,7 +43,7 @@ const PropiedadCard = ({ id, imageUrl, status, price, tipo, bedrooms, bathrooms,
         </div>
         <div className="property-title">
           {tipo}
-          <button onClick={irADetalle}>ver detalles</button>
+          <button onClick={irADetalle}>Ver detalles</button>
         </div>
       </div>
     </div>

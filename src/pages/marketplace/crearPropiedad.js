@@ -229,7 +229,7 @@ const CrearPropiedad = () => {
                 <label>Tipo</label>
                 <select name="tipo" value={datosPropiedad.tipo} onChange={handleChange}>
                   <option>Venta</option>
-                  <option>Arriendo</option>
+                  <option>Alquiler</option>
                 </select>
               </div>
               <div>
