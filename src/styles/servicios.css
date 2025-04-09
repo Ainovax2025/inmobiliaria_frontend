@@ -8,24 +8,23 @@
     text-align: center;
 }
 
-
 /* 🔹 Título */
 .servicios-title {
     font-size: 2.5rem;
-    margin:0px;
+    margin: 0px;
     color: #393f3a;
-    
+    animation: fadeInDown 0.8s ease-out;
 }
-.servicio-list{
-    border: 1px solid;
-    width: 13vw;
-    padding: 26px 12px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 17vh;
-    justify-content: center;
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* 🔹 Subtítulo */
@@ -43,30 +42,30 @@
     justify-content: center;
     gap: 15px;
     padding: 5vh 14vw;
-    max-width: 100%; /* ✅ permite todo el ancho disponible */
+    max-width: 100%;
 }
 
-
-/* 🔹 Tarjetas */
-.servicio-item {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px 30px;
-    border-radius: 0px;
-    border-left: 4px solid #F4E1C1;
-    width: 130px; /* 🔹 Ajusté el ancho */
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    font-size: 1rem;
+/* 🔹 Tarjetas de servicio */
+.servicio-list {
+    border: 1px solid ;
+    width: 13vw;
+    padding: 26px 12px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 17vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.servicio-item:hover {
-    background: rgba(255, 255, 255, 0.18);
-}
-
-/* 🔹 Contenido desplegable */
-.servicio-content {
-    
+.servicio-list:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f7f9f8;
 }
 
 /* 🔹 Mostrar contenido */
@@ -75,22 +74,18 @@
     opacity: 1;
 }
 
-
 /* 🔹 Logo en cada tarjeta */
 .servicio-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
-  }
+}
   
-  .servicio-logo svg {
+.servicio-logo svg {
     color: #393f3a;
     font-size: 30px;
-  }
-  
-
-
+}
 
 /* 🔹 Responsive */
 @media (max-width: 768px) {
@@ -101,6 +96,6 @@
     }
 
     .servicio-item {
-        width: 45%; /* 🔹 Ajusta para que haya dos elementos por fila */
+        width: 45%;
     }
 }

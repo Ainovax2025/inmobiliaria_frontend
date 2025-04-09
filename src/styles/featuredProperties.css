@@ -128,6 +128,30 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+
+
+
+.ver-propiedad-btn {
+    margin-top: 10px;
+    background-color: #393f3a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+  }
+  
+  .ver-propiedad-btn:hover {
+    background-color: #2c312d;
+    transform: scale(1.05);
+  }
+  
+
+
+
 /* 🔹 Encabezado */
 .header {
     display: flex;

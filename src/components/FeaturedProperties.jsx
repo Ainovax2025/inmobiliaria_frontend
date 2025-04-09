@@ -1,10 +1,12 @@
-// import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaRuler, FaBed, FaBath } from 'react-icons/fa';
 
 import '../styles/featuredProperties.css';
 import property1 from '../assets/property1.jpg';
 import property2 from '../assets/property2.avif';
 import property3 from '../assets/property3.jpeg';
+import property4 from '../assets/property4.jpg'; // Puedes añadir más imágenes reales aquí
+import property5 from '../assets/property5.webp';
 
 // 🔹 Datos de las propiedades
 const properties = [
@@ -15,8 +17,7 @@ const properties = [
     location: 'Bogotá, Colombia',
     beds: 4,
     baths: 2,
-    size: '1600 m²',
-    description: 'Casa espaciosa en el corazón de la ciudad con acceso a todas las comodidades.'
+    size: '1600 m²'
   },
   {
     img: property2,
@@ -35,31 +36,54 @@ const properties = [
     beds: 5,
     baths: 3,
     size: '1800 m²'
+  },
+  {
+    img: property4,
+    title: 'Casa de campo',
+    price: '$170,000',
+    location: 'Cali, Colombia',
+    beds: 4,
+    baths: 2,
+    size: '1500 m²'
+  },
+  {
+    img: property5,
+    title: 'Apartamento central',
+    price: '$130,000',
+    location: 'Pasto, Colombia',
+    beds: 2,
+    baths: 1,
+    size: '1100 m²'
   }
 ];
 
-// 🔹 Función para renderizar estrellas
-// const renderStars = rating => {
-//   const stars = [];
-//   for (let i = 1; i <= 5; i++) {
-//     if (i <= rating) {
-//       stars.push(<FaStar key={i} className="star filled" />);
-//     } else if (i - 0.5 === rating) {
-//       stars.push(<FaStarHalfAlt key={i} className="star half" />);
-//     } else {
-//       stars.push(<FaRegStar key={i} className="star empty" />);
-//     }
-//   }
-//   return stars;
-// };
-
 const FeaturedProperties = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const itemsPerPage = 3;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex(prevIndex => (prevIndex + itemsPerPage) % properties.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const getVisibleProperties = () => {
+    const endIndex = startIndex + itemsPerPage;
+    if (endIndex <= properties.length) {
+      return properties.slice(startIndex, endIndex);
+    }
+    return [...properties.slice(startIndex), ...properties.slice(0, endIndex - properties.length)];
+  };
+
   return (
     <div className="featured-container">
       <h2>Propiedades Destacadas</h2>
       <p>Descubre nuestra selección de propiedades destacadas</p>
+
       <div className="properties-wrapper">
-        {properties.map((property, index) => (
+        {getVisibleProperties().map((property, index) => (
           <div key={index} className="property-card-home">
             <img src={property.img} alt={property.title} className="property-image-home" />
             <div className="property-info-home">
@@ -75,17 +99,13 @@ const FeaturedProperties = () => {
                   <FaRuler /> {property.size}
                 </span>
               </p>
-              <p className="property-location"> {property.location}</p>
-
+              <p className="property-location">{property.location}</p>
               <p className="property-price">{property.price}</p>
+              <button className="ver-propiedad-btn">Ver propiedad</button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* <button className="scroll-button right" onClick={() => scroll('right')}>
-        <FaArrowRight />
-      </button> */}
     </div>
   );
 };

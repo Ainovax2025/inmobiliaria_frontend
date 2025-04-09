@@ -1,21 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/bienvenida.css';
 import img1 from '../assets/img1.jpg';
-import img2 from '../assets/img2.jpg';
+import img2 from '../assets/img.2.png';
 import img3 from '../assets/img3.jpg';
+import video1 from '../assets/MP.1.mp4';
 
-const images = [img1, img2, img3];
+const mediaItems = [
+  { type: 'image', src: img1 },
+  { type: 'video', src: video1 },
+  { type: 'image', src: img2 },
+  { type: 'image', src: img3 }
+];
 
 const Bienvenida = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const videoRef = useRef(null);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage(prevIndex => (prevIndex + 1) % images.length);
-    }, 3500);
+    const currentMedia = mediaItems[currentIndex];
 
-    return () => clearInterval(interval);
-  }, []);
+    if (currentMedia.type === 'image') {
+      timerRef.current = setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+      }, 3500);
+    }
+
+    return () => {
+      clearTimeout(timerRef.current);
+    };
+  }, [currentIndex]);
+
+  const handleVideoEnded = () => {
+    setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
+  };
+
+  const currentMedia = mediaItems[currentIndex];
 
   return (
     <div className="bienvenida-container">
@@ -26,11 +46,27 @@ const Bienvenida = () => {
         </div>
         <div className="bienvenida-buttons">
           <button className="btn-primary">Ver Propiedades</button>
-          {/* <button className="btn-secondary">Explorar</button> */}
         </div>
       </div>
+
       <div className="port-slide">
-        <img src={images[currentImage]} alt="port" className="port-image" />
+        {currentMedia.type === 'image' ? (
+          <img
+            src={currentMedia.src}
+            alt="port"
+            className="port-image fade"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={currentMedia.src}
+            className="port-image fade"
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnded}
+          />
+        )}
       </div>
     </div>
   );

@@ -80,6 +80,19 @@
   height: 60vh;
 }
 
+/* 🔹 Transición suave para imágenes y videos */
+.fade {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
 /* 🔹 Adaptación a móviles */
 @media (max-width: 1024px) {
   .bienvenida-container {
@@ -107,3 +120,4 @@
     border-radius: 20px; /* Asegurar bordes redondeados */
   }
 }
+
