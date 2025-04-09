@@ -60,13 +60,16 @@ function Navbar() {
             <li className="dropdown">
               <Link to="/marketplace">Propiedades</Link>
             </li>
-            <li className="dropdown">
-              <Link to="/marketing">Marketing</Link>
-            </li>
+
             {user && user.rol && user.rol === 'admin' && (
-              <li className="dropdown">
-                <Link to="/marketplace/crearPropiedad">crear propiedad</Link>
-              </li>
+              <>
+                <li className="dropdown">
+                  <Link to="/marketplace/crearPropiedad">crear propiedad</Link>
+                </li>
+                <li className="dropdown">
+                  <Link to="/marketing">Marketing</Link>
+                </li>
+              </>
             )}
           </ul>
 
@@ -147,16 +150,6 @@ function Navbar() {
                   </li>
                 </>
               )}
-
-              {/* <li>
-                <Link to="/saldo">Saldo</Link>
-              </li>
-              <li>
-                <Link to="/qr">Mi código QR</Link>
-              </li>
-              <li>
-                <Link to="/ajustes">Ajustes y privacidad</Link>
-              </li> */}
             </ul>
           </div>
         </div>
