@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaRobot } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaRobot, FaFacebookF } from 'react-icons/fa';
+import { SiTiktok } from 'react-icons/si';
 import '../styles/socialButtons.css';
 
 const SocialButtons = () => {
@@ -29,20 +30,21 @@ const SocialButtons = () => {
   }, []);
 
   return (
-    <div className={`social-buttons ${temaClaro ? 'tema-claro' : 'tema-claro'}`}>
+    <div className={`social-buttons ${temaClaro ? 'tema-claro' : 'tema-oscuro'}`}>
       <a href="#bot" className="social-button">
         <FaRobot />
       </a>
-      <a href="https://api.whatsapp.com/send?phone=15087182173&text=%22Hola%20EVA%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20inmobiliarios.%20%C2%BFMe%20puedes%20ayudar%3F%22%20&fbclid=PAY2xjawJikp1leHRuA2FlbQIxMAABp_SvySXgUytgr8MFfGIvMoqYgLbRYjugGNEy1DH12aKsVB4n8DyYAuzLwMAC_aem_WUuko8XCi3T8pgeelPm6oQ" target="_blank" rel="noopener noreferrer" className="social-button">
-        <FaWhatsapp />
-      </a>
-      <a href="https://www.instagram.com/mariopaz.inmobiliaria?igsh=emw4MXdtbDRua2Rr" target="_blank" rel="noopener noreferrer" className="social-button">
+      
+      <a href="https://www.instagram.com/mariopaz.inmobiliaria" target="_blank" rel="noopener noreferrer" className="social-button">
         <FaInstagram />
       </a>
-      <a href="mailto:mario_a_pm@hotmail.com" className="social-button">
-        <FaEnvelope />
-      </a>
       
+      <a href="https://www.facebook.com/share/1VMTSFoR94/   " target="_blank" rel="noopener noreferrer" className="social-button">
+        <FaFacebookF />
+      </a>
+      <a href="https://www.tiktok.com/@mariopazinmobiliaria?_t=ZS-8vQfnpCAhR2&_r=1" target="_blank" rel="noopener noreferrer" className="social-button">
+        <SiTiktok />
+      </a>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import video1 from '../assets/MP.1.mp4';
 const Bienvenida = () => {
   return (
     <div className="bienvenida-container">
+      <video src={video1} className="video-background" autoPlay muted playsInline loop />
       <div className="bienvenida-content">
         <div className="bienvenida-text">
           <h1>Descubre el hogar de tus sueños con Mario Paz inmobiliaria</h1>
@@ -13,10 +14,6 @@ const Bienvenida = () => {
         <div className="bienvenida-buttons">
           <button className="btn-primary">Ver Propiedades</button>
         </div>
-      </div>
-
-      <div className="port-slide">
-        <video src={video1} className="port-image fade" autoPlay muted playsInline loop />
       </div>
     </div>
   );
