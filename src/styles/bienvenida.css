@@ -70,8 +70,8 @@
 
 .bienvenida-buttons button:hover {
   animation: buttonHover 0.6s ease-in-out;
-  background: #373a32;
-  color: white;
+  background: white;
+  color: #2C3A24;
 }
 
 /* 🔹 Animaciones */

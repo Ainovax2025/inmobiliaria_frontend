@@ -9,7 +9,7 @@ import {} from 'react-icons/fa';
 import getAmenityIcon from '../../components/amenidades.jsx';
 import agentPlaceholder from '../../assets/wallpapers/Agent2.jpg';
 import GoBack from '../../components/navGoback.jsx';
-
+import defaultImage from '../../assets/NoImagenHorizontal.png';
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const PropiedadDetalle = () => {
@@ -32,6 +32,7 @@ const PropiedadDetalle = () => {
 
         const data = await response.json();
         setPropiedad(data);
+        console.log(data);
       } catch (error) {
         console.error('Error en la obtención:', error);
       } finally {
@@ -52,7 +53,7 @@ const PropiedadDetalle = () => {
               <LoadingSpinner />
             ) : (
               <>
-                <CarouselCard images={propiedad.imagenes} />
+                <CarouselCard images={propiedad.imagenes.length > 0 ? propiedad.imagenes : [defaultImage]} />
                 <span className="spanTipoOperacionMobile">{propiedad.tipooperacion}</span>
               </>
             )}
