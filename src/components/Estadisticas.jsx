@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/estadisticas.css';
 
 const statsData = [
-  { value: 8530, label: 'Ventas de Apartamentos' },
-  { value: 5, label: 'Años de experiencia' },
-  { value: 7504, label: 'Clientes satisfechos' }
+  { value: 24, suffix: 'h', label: 'Tiempo record de venta' },
+  { value: 5, suffix: '+', label: 'Años de experiencia' },
+  { value: 400, suffix: '+', label: 'Clientes satisfechos' }
 ];
 
 const Estadisticas = () => {
@@ -29,7 +29,10 @@ const Estadisticas = () => {
     <section className="estadisticas-container" ref={sectionRef}>
       {statsData.map((item, i) => (
         <div className="estadistica" key={i}>
-          <h2>{startCount ? <CountUp end={item.value} duration={1.5} /> : '0'}+</h2>
+          <h2>
+            {startCount ? <CountUp end={item.value} duration={1.5} /> : '0'}
+            <span className="suffix">{item.suffix}</span>
+          </h2>
           <p>{item.label}</p>
         </div>
       ))}
