@@ -5,7 +5,7 @@ import '../styles/featuredProperties.css';
 import property1 from '../assets/property1.jpg';
 import property2 from '../assets/property2.avif';
 import property3 from '../assets/property3.jpeg';
-import property4 from '../assets/property4.jpg'; // Puedes añadir más imágenes reales aquí
+import property4 from '../assets/property4.jpg';
 import property5 from '../assets/property5.webp';
 
 // 🔹 Datos de las propiedades
@@ -59,12 +59,21 @@ const properties = [
 
 const FeaturedProperties = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [fade, setFade] = useState(true); // Estado para controlar la transición
   const itemsPerPage = 3;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStartIndex(prevIndex => (prevIndex + itemsPerPage) % properties.length);
-    }, 3000);
+      // Inicia fade-out
+      setFade(false);
+
+      // Espera a que se complete el fade-out antes de cambiar los elementos
+      setTimeout(() => {
+        setStartIndex(prevIndex => (prevIndex + itemsPerPage) % properties.length);
+        // Activa fade-in
+        setFade(true);
+      }, 500); // Duración del efecto de fade-out en milisegundos
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -74,7 +83,10 @@ const FeaturedProperties = () => {
     if (endIndex <= properties.length) {
       return properties.slice(startIndex, endIndex);
     }
-    return [...properties.slice(startIndex), ...properties.slice(0, endIndex - properties.length)];
+    return [
+      ...properties.slice(startIndex),
+      ...properties.slice(0, endIndex - properties.length)
+    ];
   };
 
   return (
@@ -82,10 +94,14 @@ const FeaturedProperties = () => {
       <h2>Propiedades Destacadas</h2>
       <p>Descubre nuestra selección de propiedades destacadas</p>
 
-      <div className="properties-wrapper">
+      <div className={`properties-wrapper ${fade ? 'fade-in' : 'fade-out'}`}>
         {getVisibleProperties().map((property, index) => (
           <div key={index} className="property-card-home">
-            <img src={property.img} alt={property.title} className="property-image-home" />
+            <img
+              src={property.img}
+              alt={property.title}
+              className="property-image-home"
+            />
             <div className="property-info-home">
               <h3>{property.title}</h3>
               <p className="property-details">

@@ -1,3 +1,15 @@
+.properties-wrapper {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
+
 /* Contenedor principal */
 .featured-container {
     padding: 6vh 10vw; 
