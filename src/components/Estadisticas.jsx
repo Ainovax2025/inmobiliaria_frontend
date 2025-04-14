@@ -18,7 +18,7 @@ const Estadisticas = () => {
           setStartCount(true);
         }
       },
-      { threshold: 1 }
+      { threshold: 0.9 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);

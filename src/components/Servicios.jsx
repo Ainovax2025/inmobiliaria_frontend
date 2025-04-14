@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBalanceScale, FaHome, FaFileContract, FaKey, FaChartLine, FaTools, FaBroom } from 'react-icons/fa';
+import { FaBalanceScale, FaHome, FaFileContract, FaKey, FaChartLine, FaTools, FaBroom, FaMoneyCheckAlt } from 'react-icons/fa';
 import '../styles/servicios.css';
 
 const Servicios = () => {
@@ -38,6 +38,11 @@ const Servicios = () => {
       titulo: 'Aseo por horas',
       descripcion: 'Ofrecemos servicio flexible de limpieza por horas en hogares.',
       icono: <FaBroom />
+    },
+    {
+      titulo: 'Caja Honor',
+      descripcion: 'Ofrecemos soluciones de vivienda a los miembros de las Fuerzas Militares y la Policía Nacional de Colombia.',
+      icono: <FaMoneyCheckAlt />
     }
   ];
 
