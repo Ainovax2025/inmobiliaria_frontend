@@ -28,13 +28,13 @@
 
 /* 🎨 Estilo por defecto (usado si no se aplica tema explícito) */
 .social-buttons a svg {
-  color: #F4E1C1;
+  color:  #2C3A24;
   font-size: 30px;
 }
 
 /* 🔆 Tema Claro: fondo claro, íconos oscuros */
 .social-buttons.tema-claro a svg {
-  color: #2C3A24;
+  color: #F4E1C1;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
 }
 
@@ -44,7 +44,7 @@
 
 /* 🌑 Tema Oscuro: fondo oscuro, íconos claros */
 .social-buttons.tema-oscuro a svg {
-  color: #ffffff;
+  color: #2C3A24;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }
 

@@ -5,6 +5,7 @@ import Estadisticas from '../../components/Estadisticas';
 import SocialButtons from '../../components/SocialButtons'; // ✅ Importamos los botones
 import '../../styles/home.css';
 import Servicios from '../../components/Servicios';
+import Equipo from '../../components/Equipo';
 
 const Home = () => {
   return (
@@ -21,11 +22,10 @@ const Home = () => {
       <section className="seccion-oscura">
         <Servicios />
       </section>
+      
+      <Equipo />
       <SocialButtons />
-      {/* 
-      <section className="seccion-clara">
-        <button className="elegant-button">Contáctanos</button>
-      </section> */}
+      
     </div>
   );
 };

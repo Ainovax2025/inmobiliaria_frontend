@@ -1,0 +1,82 @@
+.equipo-container {
+  background-color: #D3DCDC;
+  padding: 50px;
+  text-align: center;
+  color: #393f3a;
+}
+
+.equipo-perfiles {
+  display: flex;
+  background-color: transparent;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.perfil {
+  background-color: transparent;
+  border-radius: 20px;
+  width: 48%;
+  color: #393f3a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.perfil-imagen {
+  width: 44%;
+  height: 280px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.perfil-info {
+  padding: 15px 20px;
+}
+
+.perfil-info h3 {
+  margin: 10px 0 5px;
+  font-size: 1.3rem;
+}
+
+.perfil-info p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.descripcion {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  font-size: 0.95rem;
+  color: #393f3a;
+  line-height: 1.6;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+
+/* Solo se despliega la descripción si la tarjeta tiene la clase .hovered */
+.perfil.hovered .descripcion {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .equipo-perfiles {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .perfil {
+    width: 100%;
+  }
+}
