@@ -9,8 +9,9 @@
   z-index: 1000;
 }
 
-.social-buttons a {
-  background-color: transparent;
+.social-button {
+  background-color: rgba(255, 255, 255, 0.75); /* fondo semitransparente */
+  backdrop-filter: blur(6px); /* desenfoque */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,35 +20,16 @@
   border-radius: 50%;
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* 🎯 Efecto al pasar el cursor */
-.social-buttons a:hover {
-  transform: scale(1.2);
-}
-
-/* 🎨 Estilo por defecto (usado si no se aplica tema explícito) */
-.social-buttons a svg {
-  color:  #2C3A24;
+.social-button svg {
+  color: #2C3A24; /* ícono verde oscuro que resalta */
   font-size: 30px;
+  transition: color 0.3s ease;
 }
 
-/* 🔆 Tema Claro: fondo claro, íconos oscuros */
-.social-buttons.tema-claro a svg {
-  color: #F4E1C1;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
-}
-
-.social-buttons.tema-claro a:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-/* 🌑 Tema Oscuro: fondo oscuro, íconos claros */
-.social-buttons.tema-oscuro a svg {
-  color: #2C3A24;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-}
-
-.social-buttons.tema-oscuro a:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+.social-button:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(44, 58, 36, 0.4);
 }
