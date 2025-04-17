@@ -30,7 +30,7 @@ const Estadisticas = () => {
       {statsData.map((item, i) => (
         <div className="estadistica" key={i}>
           <h2>
-            {startCount ? <CountUp end={item.value} duration={1.5} /> : '0'}
+            {startCount ? <CountUp end={item.value} duration={3} /> : '0'}
             <span className="suffix">{item.suffix}</span>
           </h2>
           <p>{item.label}</p>

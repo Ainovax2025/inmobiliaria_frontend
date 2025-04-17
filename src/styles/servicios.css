@@ -1,6 +1,9 @@
 /* 🔹 Contenedor de Servicios */
 .servicios-container {
-    padding: 50px 20px; 
+    padding-top: 80px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: 0 auto; 
     background-color:#d3dcdc;
     font-family: 'Playfair Display', serif;
