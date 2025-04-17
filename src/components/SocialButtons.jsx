@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaRobot, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaRobot, FaFacebookF } from 'react-icons/fa';
 import { SiTiktok } from 'react-icons/si';
 import '../styles/socialButtons.css';
 
