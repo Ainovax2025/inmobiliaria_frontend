@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaTiktok } from 'react-icons/fa';
 import '../styles/footer.css';
 
 const Footer = () => {
@@ -7,40 +7,40 @@ const Footer = () => {
     <footer className="footer">
       <div className="containerFooter">
         <div className="footer-section about">
-          <h4>About Us</h4>
-          <p>Leading real estate agency with the best properties for sale and rent.</p>
+          <h4>Sobre nosotros</h4>
+          <p>Agencia inmobiliaria líder con las mejores propiedades en venta y alquiler.</p>
         </div>
 
         <div className="footer-section">
-          <h4>Quick Links</h4>
+          <h4>Enlaces rápidos</h4>
           <ul>
             <li>
-              <span>Properties</span>
+              <span>Propiedades</span>
             </li>
             <li>
-              <span>Services</span>
+              <span>Servicios</span>
             </li>
             <li>
-              <span>Contact</span>
+              <span>Contacto</span>
             </li>
           </ul>
         </div>
 
         <div className="footer-section">
-          <h4>Contact Info</h4>
+          <h4>Información de contacto</h4>
           <p>
-            <FaPhone /> +1 234 567 890
+            <FaPhone /> +57 319 7115100
           </p>
           <p>
-            <FaEnvelope /> info@realestate.com
+            <FaEnvelope /> Soeve.01@gmail.com
           </p>
         </div>
 
         <div className="footer-section social">
-          <h4>Follow Us</h4>
+          <h4>Siguenos en</h4>
           <div className="social-icons">
             <FaFacebook />
-            <FaTwitter />
+            <FaTiktok />
             <FaInstagram />
           </div>
         </div>
