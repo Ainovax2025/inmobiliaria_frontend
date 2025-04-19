@@ -40,7 +40,7 @@ function Navbar() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     setUser(null);
-    window.location.href = '/inmobiliaria_frontend/#/marketplace';
+    window.location.href = '/#/marketplace';
   };
   return (
     <>
@@ -57,9 +57,9 @@ function Navbar() {
             <li>
               <Link to="/">Home</Link>
             </li>
-            {/* <li className="dropdown">
+            <li className="dropdown">
               <Link to="/marketplace">Propiedades</Link>
-            </li> */}
+            </li>
 
             {user && user.rol && user.rol === 'admin' && (
               <>
@@ -87,8 +87,10 @@ function Navbar() {
                   {/* <button onClick={handleLogout}>Cerrar sesión</button> */}
                 </div>
               ) : (
-                //<button onClick={() => setLoginOpen(true)}>Ingresar</button>
-                <button disabled className="btn-desactivado">Ingresar</button>
+                <button onClick={() => setLoginOpen(true)}>Ingresar</button>
+                // <button disabled className="btn-desactivado">
+                //   Ingresar
+                // </button>
               )}{' '}
             </div>
           </div>

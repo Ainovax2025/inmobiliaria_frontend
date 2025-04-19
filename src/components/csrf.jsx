@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const CsrfContext = createContext();
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'https://inmobiliaria-backend.onrender.com';
 
 const CsrfProvider = ({ children }) => {
   const [csrfToken, setCsrfToken] = useState(null);

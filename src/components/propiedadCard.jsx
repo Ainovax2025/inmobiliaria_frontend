@@ -9,7 +9,6 @@ import defaultImage from '../assets/noimage.png';
 const PropiedadCard = ({ id, imageUrl, status, price, tipo, bedrooms, bathrooms, area, location }) => {
   const navigate = useNavigate();
 
-  console.log(imageUrl);
   const irADetalle = () => {
     navigate(`/marketplace/${id}`);
   };
