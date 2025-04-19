@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/inmobiliaria_frontend/static/css/main.5ef733a6.css",
+    "main.js": "/inmobiliaria_frontend/static/js/main.e84651da.js",
+    "static/media/MP.1.mp4": "/inmobiliaria_frontend/static/media/MP.1.60ce70a23e3d5a4dbef5.mp4",
+    "static/media/NoImagenHorizontal.png": "/inmobiliaria_frontend/static/media/NoImagenHorizontal.1a79a2705a01878e53e5.png",
+    "static/media/noimage.png": "/inmobiliaria_frontend/static/media/noimage.21be15b7ab265962fea0.png",
+    "static/media/perfil2.png": "/inmobiliaria_frontend/static/media/perfil2.a23ac1852ba112cc0078.png",
+    "static/media/property1.jpg": "/inmobiliaria_frontend/static/media/property1.78a6d281bfce6912916e.jpg",
+    "static/media/property5.webp": "/inmobiliaria_frontend/static/media/property5.c10894f65d7999b73a4f.webp",
+    "static/media/perfil1.png": "/inmobiliaria_frontend/static/media/perfil1.27b41e11ac250f2e6e5c.png",
+    "static/media/property2.avif": "/inmobiliaria_frontend/static/media/property2.d9bf58ef525dc245cc56.avif",
+    "static/media/property4.jpg": "/inmobiliaria_frontend/static/media/property4.3fea62576a334b895a5c.jpg",
+    "static/media/Agent2.jpg": "/inmobiliaria_frontend/static/media/Agent2.877361a2de3598b5917c.jpg",
+    "index.html": "/inmobiliaria_frontend/index.html",
+    "main.5ef733a6.css.map": "/inmobiliaria_frontend/static/css/main.5ef733a6.css.map",
+    "main.e84651da.js.map": "/inmobiliaria_frontend/static/js/main.e84651da.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ef733a6.css",
+    "static/js/main.e84651da.js"
+  ]
+}
