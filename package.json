@@ -2,7 +2,7 @@
   "name": "inmobiliaria_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ainovax2025.github.io/inmobiliaria_frontend/",
+  "homepage": "/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
