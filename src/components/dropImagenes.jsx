@@ -1,18 +1,35 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import '../styles/dropImagenes.css';
 
-import '../styles/dropImagenes.css'; // Aquí irá el estilo
-
-const DropzoneMultiple = () => {
+const DropzoneMultiple = ({ initialImages = [], onImagesChange }) => {
   const [images, setImages] = useState([]);
   const fileInputRef = useRef();
+
+  useEffect(() => {
+    if (initialImages.length > 0) {
+      const existing = initialImages.map(url => ({
+        file: null,
+        url,
+        isExisting: true
+      }));
+      setImages(existing);
+    }
+  }, [initialImages]);
+
+  useEffect(() => {
+    if (onImagesChange) {
+      onImagesChange(images.map(img => img.url));
+    }
+  }, [images, onImagesChange]);
 
   const handleFiles = files => {
     const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
 
     const imagePreviews = imageFiles.map(file => ({
       file,
-      url: URL.createObjectURL(file)
+      url: URL.createObjectURL(file),
+      isExisting: false
     }));
 
     setImages(prev => [...prev, ...imagePreviews]);
@@ -32,7 +49,11 @@ const DropzoneMultiple = () => {
   };
 
   const removeImage = index => {
-    setImages(prev => prev.filter((_, i) => i !== index));
+    setImages(prev => {
+      const updated = prev.filter((_, i) => i !== index);
+      if (onImagesChange) onImagesChange(updated.map(i => i.url));
+      return updated;
+    });
   };
 
   return (

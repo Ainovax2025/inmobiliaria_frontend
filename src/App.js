@@ -8,7 +8,6 @@ import PropiedadDetalle from './pages/marketplace/propiedadDetalle.js';
 import CrearPropiedad from './pages/marketplace/crearPropiedad.js';
 import Footer from './components/footer.jsx';
 import './styles/app.css';
-
 function App() {
   return (
     <>
@@ -19,6 +18,7 @@ function App() {
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/marketplace/:id" element={<PropiedadDetalle />} />
           <Route path="/marketplace/crearPropiedad" element={<CrearPropiedad />} />
+          <Route path="/marketplace/crearPropiedad/:id" element={<CrearPropiedad />} />
           <Route path="/marketing" element={<Marketing />} />
         </Routes>
       </div>

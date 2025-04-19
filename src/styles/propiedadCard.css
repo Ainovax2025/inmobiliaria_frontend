@@ -54,6 +54,42 @@
     justify-content: space-between;
     align-items: center;
     }
+
+    .property-buttons{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-top: 15px;
+    }
+
+    .property-buttons button{
+      margin: 0px;
+      font-size: 23px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      border-radius: 5px;
+      font-weight: 800;
+    }
+    .Edit-Property, .my-confirm-btn{
+      background-color: #FFF1E4;
+      color: #EA6F07;
+    }
+    .Delete-Property, .my-cancel-btn{
+      background-color: #FFD3E2;
+      color: #CA0045;
+    }
+    .my-popup{
+      border-radius: 20px;
+    }
   
   .property-details {
     display: flex;
