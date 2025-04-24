@@ -90,15 +90,51 @@
     font-size: 30px;
 }
 
-/* 🔹 Responsive */
-@media (max-width: 768px) {
-    .servicios-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+/* 🔹 Tablets */
+@media (max-width: 1024px) {
+  .servicios-title {
+    font-size: 2rem;
+  }
 
-    .servicio-item {
-        width: 45%;
-    }
+  .servicios-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .servicio-list {
+    width: 40vw;
+    height: auto;
+    padding: 20px 15px;
+  }
+
+  .servicios-list {
+    gap: 20px;
+    padding: 5vh 5vw;
+  }
 }
+
+/* 🔹 Móviles */
+@media (max-width: 600px) {
+  .servicios-title {
+    font-size: 1.7rem;
+  }
+
+  .servicios-subtitle {
+    font-size: 1rem;
+  }
+
+  .servicio-list {
+    width: 80vw;
+    height: auto;
+    padding: 20px 12px;
+  }
+
+  .servicio-logo svg {
+    font-size: 28px;
+  }
+
+  .servicios-list {
+    padding: 4vh 3vw;
+    gap: 15px;
+  }
+}
+

@@ -43,19 +43,6 @@
 
 }
 
-/* 🔹 Responsivo */
-@media (max-width: 992px) {
-  .estadistica {
-    flex: 1 1 45%; /* ✅ 2 por fila */
-  }
-}
-
-@media (max-width: 600px) {
-  .estadistica {
-    flex: 1 1 100%; /* ✅ 1 por fila */
-  }
-}
-
 /* 🔹 Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -72,3 +59,41 @@
     transform: translateY(0);
   }
 }
+
+
+/* 🔹 Responsive: tablets */
+@media (max-width: 1024px) {
+  .estadisticas-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5vh 10vw;
+  }
+
+  .estadistica {
+    flex: 1 1 40%;
+    max-width: 45%;
+    margin: 10px 0;
+  }
+}
+
+/* 🔹 Responsive: móviles */
+@media (max-width: 600px) {
+  .estadisticas-container {
+    flex-direction: column;
+    padding: 4vh 5vw;
+  }
+
+  .estadistica {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .estadistica h2 {
+    font-size: 1.8rem;
+  }
+
+  .estadistica p {
+    font-size: 1.1rem;
+  }
+}
+

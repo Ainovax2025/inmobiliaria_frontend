@@ -130,28 +130,61 @@
   }
 }
 
-/* 🔹 Adaptación a móviles */
 @media (max-width: 1024px) {
   .bienvenida-container {
-    flex-direction: column;
-    height: auto;
-    padding: 60px 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5vh 10vw; /* igual que estadísticas */
+    height: auto; /* evita forzar altura */
+    box-sizing: border-box;
   }
 
   .bienvenida-content {
+    flex: 1 1 40%;
+    max-width: 45%;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .bienvenida-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .bienvenida-text p {
+    font-size: 1.2rem;
+  }
+
+  .bienvenida-buttons button {
+    padding: 14px 38px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .bienvenida-container {
+    flex-direction: column;
+    padding: 4vh 5vw;
+  }
+
+  .bienvenida-content {
+    flex: 1 1 100%;
     max-width: 100%;
-    padding: 0;
   }
 
   .bienvenida-text h1 {
     font-size: 2rem;
+    line-height: 1.3;
   }
 
   .bienvenida-text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .bienvenida-buttons button {
-    padding: 14px 36px;
+    padding: 12px 30px;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
   }
 }

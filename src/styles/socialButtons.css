@@ -33,3 +33,38 @@
   transform: scale(1.2);
   box-shadow: 0 0 12px rgba(44, 58, 36, 0.4);
 }
+
+
+/* Medios de consulta para pantallas pequeñas */
+@media (max-width: 768px) {
+  .social-buttons {
+    right: 10px; /* Ajusta la posición en pantallas pequeñas */
+    bottom: 10vh; /* Cambia la posición vertical en pantallas pequeñas */
+  }
+
+  /* Reduce el tamaño de los botones en pantallas más pequeñas */
+  .social-buttons .social-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-buttons .social-button svg {
+    font-size: 25px; /* Ajusta el tamaño de los íconos */
+  }
+}
+
+@media (max-width: 480px) {
+  .social-buttons {
+    right: 10px; /* Asegura que se mantengan en la pantalla */
+    bottom: 10vh; /* Ajusta la distancia desde la parte inferior */
+  }
+
+  .social-buttons .social-button {
+    width: 45px; /* Tamaño más pequeño */
+    height: 45px; /* Tamaño más pequeño */
+  }
+
+  .social-buttons .social-button svg {
+    font-size: 20px; /* Aumenta aún más la responsividad de los íconos */
+  }
+}
