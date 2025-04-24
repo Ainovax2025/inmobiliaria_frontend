@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import '../styles/login.css';
 import { MdOutlineMail } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -6,10 +6,14 @@ import { CiUser } from 'react-icons/ci';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCsrfToken } from './csrf.jsx';
+import { EstadoUsuarioContext } from './estadoUsuarioActivo'; // 👈 Importa el contexto
+
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
-const Login = ({ isOpen, onClose, onLoginSuccess }) => {
+const Login = ({ isOpen, onClose }) => {
   const csrfToken = useCsrfToken();
+  const { login } = useContext(EstadoUsuarioContext); // 👈 Usa la función login del contexto
+
   const [isSignIn, setIsSignIn] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
@@ -20,31 +24,13 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
   const [errors, setErrors] = useState({});
   const isMobile = window.innerWidth < 900;
 
-  const isValidEmail = email => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  };
-
-  const sanitizeInput = input => {
-    return input.replace(/['"<>;]/g, '');
-  };
-
-  const isSafeInput = input => {
-    const unsafeChars = /[`~!#$%^&*()+={}|[\]\\:";'<>?,/]/;
-    return !unsafeChars.test(input);
-  };
-
-  const isStrongPassword = password => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
-    return passwordRegex.test(password);
-  };
+  const isValidEmail = email => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+  const sanitizeInput = input => input.replace(/['"<>;]/g, '');
+  const isSafeInput = input => !/[`~!#$%^&*()+={}|[\]\\:";'<>?,/]/.test(input);
+  const isStrongPassword = password => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/.test(password);
 
   const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-
+    setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({});
   };
 
@@ -53,19 +39,12 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
 
     let newErrors = {};
 
-    if (!isValidEmail(formData.email)) {
-      newErrors.email = 'Correo inválido';
-    }
-
-    if (!isSafeInput(formData.name) && !isSignIn) {
-      newErrors.name = 'El nombre contiene caracteres no permitidos.';
-    }
-
+    if (!isValidEmail(formData.email)) newErrors.email = 'Correo inválido';
+    if (!isSignIn && !isSafeInput(formData.name)) newErrors.name = 'El nombre contiene caracteres no permitidos.';
     if (!isStrongPassword(formData.password)) {
       newErrors.password =
         'La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial';
     }
-
     if (!isSignIn && formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Las contraseñas no coinciden';
     }
@@ -84,36 +63,30 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfToken // ✅ Agregar el token CSRF en los headers
+            'X-CSRF-Token': csrfToken
           },
           body: JSON.stringify(
-            isSignIn
-              ? {
-                  email: sanitizedData.email,
-                  contrasena: sanitizedData.contrasena
-                }
-              : sanitizedData
+            isSignIn ? { email: sanitizedData.email, contrasena: sanitizedData.contrasena } : sanitizedData
           )
         });
 
         const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.message || 'Error en el servidor');
-        }
+        if (!response.ok) throw new Error(data.message || 'Error en el servidor');
+
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        localStorage.setItem('rol', JSON.stringify(data.rol));
+        login(data.user.user);
+        localStorage.setItem('user', JSON.stringify(data.user.user));
+
         toast.success(isSignIn ? 'Iniciaste sesión' : 'Usuario creado exitosamente');
         setTimeout(() => {
-          if (onLoginSuccess) {
-            onLoginSuccess();
-          }
+          onClose(); // Cierra el modal
         }, 1000);
       } catch (error) {
         toast.error(error.message);
       }
     }
   };
+
   if (!isOpen) return null;
 
   const toggleMode = () => {
@@ -141,73 +114,23 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
               <h2>{isSignIn ? 'Bienvenido de nuevo' : 'Crea tu cuenta'}</h2>
               <p>{isSignIn ? 'inicia sesión con tu cuenta.' : 'Usa tu correo personal para registrate'}</p>
             </div>
-
             <div onClick={toggleMode} style={{ position: 'absolute', bottom: '15px' }}>
-              <h3
-                style={{
-                  fontSize: '12px',
-                  fontWeight: '200',
-                  margin: '10px 0px'
-                }}>
+              <h3 style={{ fontSize: '12px', fontWeight: '200', margin: '10px 0px' }}>
                 {isSignIn ? 'No tienes una cuenta ?' : 'Ya tienes una cuenta?'}
               </h3>
-              {!isSignIn ? (
-                <button style={{ margin: '0px' }}>Iniciar sesión</button>
-              ) : (
-                <button style={{ margin: '0px' }}>Crear cuenta</button>
-              )}
+              <button style={{ margin: '0px' }}>{isSignIn ? 'Crear cuenta' : 'Iniciar sesión'}</button>
             </div>
           </div>
         </div>
+
         <div className={`containerParts ${isSignIn ? 'right-panel' : 'left-panel'}`}>
           <div className="ContainerSignUp">
             <div className="modal-header">
               <h2>{isSignIn ? 'Iniciar sesión' : 'Crear cuenta'}</h2>
             </div>
 
-            {isSignIn ? (
-              <form onSubmit={handleSubmit}>
-                <div className="ContainerInputFrom">
-                  <MdOutlineMail />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="ContainerInputFrom">
-                  <RiLockPasswordLine />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Contraseña"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                {Object.keys(errors).length > 0 && (
-                  <div
-                    style={{
-                      background: '#FFD3E2',
-                      padding: '10px',
-                      borderRadius: '7px'
-                    }}>
-                    {Object.entries(errors).map(([key, message]) => (
-                      <p key={key} className="error">
-                        - {message}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                <button type="submit">Iniciar sesión</button>
-              </form>
-            ) : (
-              <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
+              {!isSignIn && (
                 <div className="ContainerInputFrom">
                   <CiUser />
                   <input
@@ -219,28 +142,30 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
                     required
                   />
                 </div>
-                <div className="ContainerInputFrom">
-                  <MdOutlineMail />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="ContainerInputFrom">
-                  <RiLockPasswordLine />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Contraseña"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+              )}
+              <div className="ContainerInputFrom">
+                <MdOutlineMail />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="ContainerInputFrom">
+                <RiLockPasswordLine />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Contraseña"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {!isSignIn && (
                 <div className="ContainerInputFrom">
                   <RiLockPasswordLine />
                   <input
@@ -252,23 +177,20 @@ const Login = ({ isOpen, onClose, onLoginSuccess }) => {
                     required
                   />
                 </div>
-                {Object.keys(errors).length > 0 && (
-                  <div
-                    style={{
-                      background: '#FFD3E2',
-                      padding: '10px',
-                      borderRadius: '7px'
-                    }}>
-                    {Object.entries(errors).map(([key, message]) => (
-                      <p key={key} className="error">
-                        - {message}
-                      </p>
-                    ))}
-                  </div>
-                )}
-                <button type="submit">Crear cuenta</button>
-              </form>
-            )}
+              )}
+
+              {Object.keys(errors).length > 0 && (
+                <div style={{ background: '#FFD3E2', padding: '10px', borderRadius: '7px' }}>
+                  {Object.entries(errors).map(([key, message]) => (
+                    <p key={key} className="error">
+                      - {message}
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              <button type="submit">{isSignIn ? 'Iniciar sesión' : 'Crear cuenta'}</button>
+            </form>
 
             {isMobile && (
               <div className="toggle-auth" onClick={toggleMode}>

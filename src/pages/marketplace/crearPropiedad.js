@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../../styles/crearPropiedad.css';
 import DropzoneMultiple from '../../components/dropImagenes';
 import LoadingSpinner from '../../components/spinner.jsx';
@@ -7,21 +7,21 @@ import { useCsrfToken } from '../../components/csrf.jsx';
 import getAmenityIcon from '../../components/amenidades.jsx';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { EstadoUsuarioContext } from '../../components/estadoUsuarioActivo'; // 👈 Importa el contexto
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const CrearPropiedad = () => {
   const csrfToken = useCsrfToken();
-  const url = [
-    'https://s3.amazonaws.com/imagenesprof.fincaraiz.com.co/OVFR_COL/2021/12/2/2354528_995_11.jpg',
-    'https://img.mitula.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzAxOTU2YzA4LWYxZWUtNzY2OS04NTZiLWU4NzExZmYxYTI2ZC8wMTk1NmMxZC04OGU0LTcwYTYtOTFkMC1lODkzNjNiOTdiNTIuanBnIiwiYnJhbmQiOiJtaXR1bGEiLCJlZGl0cyI6eyJyb3RhdGUiOm51bGwsInJlc2l6ZSI6eyJ3aWR0aCI6MzgwLCJoZWlnaHQiOjIzMCwiZml0IjoiY292ZXIifX19',
-    'https://images.ctfassets.net/8lc7xdlkm4kt/6bYolzLQSPgZawCDlHb9qr/ca35368f17fc3143fe969c9b074a73de/mint-apartamentos-barranquilla-sala.jpg'
-  ];
+  const url = [];
+  const { id } = useParams(); // esto vendrá de la ruta /editarpropiedad/:id
+  const modoEdicion = !!id;
+  const [imagenesSeleccionadas, setImagenesSeleccionadas] = useState([]);
   const [amenidades, setAmenidades] = useState([]);
   const [loading, setLoading] = useState(false);
   const [amenidadesSeleccionadas, setAmenidadesSeleccionadas] = useState([]);
-  const storedUser = JSON.parse(localStorage.getItem('user')).user;
+  const storedUser = JSON.parse(localStorage.getItem('user'));
   const [datosPropiedad, setDatosPropiedad] = useState({
-    usuarioId: storedUser.id,
+    usuarioId: storedUser && storedUser.id,
     titulo: '',
     precio: '',
     tipo: 'Venta',
@@ -32,6 +32,7 @@ const CrearPropiedad = () => {
     banos: '',
     area: '',
     antiguedad: '',
+    destacado: false,
     contacto: {
       nombre: '',
       email: '',
@@ -45,7 +46,14 @@ const CrearPropiedad = () => {
     fechaPublicacion: new Date(),
     urlImagen: url
   });
+  const { user } = useContext(EstadoUsuarioContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user || user.rol !== 'admin') {
+      navigate('/'); // Redirige si no es admin
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     const fetchAmenidades = async () => {
@@ -69,10 +77,70 @@ const CrearPropiedad = () => {
       }
     };
 
+    const fetchPropiedad = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${BASE_URL}/marketplace/propiedadById/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrfToken
+          }
+        });
+
+        if (!response.ok) throw new Error('Error al obtener la propiedad');
+        const data = await response.json();
+        setDatosPropiedad({
+          usuarioId: data.idusuario,
+          titulo: data.titulo || '',
+          precio: data.precio || '',
+          tipo: data.tipooperacion || 'Venta',
+          tipoPropiedad: data.tipopropiedad || 'casa',
+          estado: data.activo ? 'Activo' : 'Inactivo',
+          descripcion: data.descripcion || '',
+          habitaciones: data.habitaciones || '',
+          banos: data.banos || '',
+          area: data.area || '',
+          antiguedad: data.antiguedad || '',
+          destacado: data.destacado || false,
+          contacto: {
+            nombre: data.contacto?.nombre || '',
+            email: data.contacto?.email || '',
+            celular: data.contacto?.celular || ''
+          },
+          ubicacion: {
+            direccion: data.direccion || '',
+            ciudad: data.ciudad || '',
+            barrio: data.barrio || ''
+          },
+          fechaPublicacion: data.fechapublicacion || new Date(),
+          urlImagen: data.imagenes || [],
+          amenidades: data.amenidades || []
+        });
+      } catch (error) {
+        toast.error('Error al cargar la propiedad');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (modoEdicion && csrfToken) {
+      fetchPropiedad();
+    }
+
     if (csrfToken) {
       fetchAmenidades();
     }
-  }, [csrfToken]);
+  }, [csrfToken, id, modoEdicion]);
+
+  useEffect(() => {
+    if (modoEdicion && datosPropiedad.amenidades && amenidades.length > 0) {
+      const idsSeleccionados = amenidades.filter(a => datosPropiedad.amenidades.includes(a.nombre)).map(a => a.id);
+
+      setAmenidadesSeleccionadas(idsSeleccionados);
+    }
+  }, [modoEdicion, datosPropiedad.amenidades, amenidades]);
 
   const toggleAmenidadSeleccionada = id => {
     setAmenidadesSeleccionadas(
@@ -161,16 +229,35 @@ const CrearPropiedad = () => {
       return;
     }
 
-    const datosCompletos = {
-      ...datosPropiedad,
-      amenidades: amenidadesSeleccionadas
-    };
-
     try {
       setLoading(true);
+      let nuevasKeys = [];
 
-      const response = await fetch(`${BASE_URL}/marketplace/crearpropiedad`, {
-        method: 'POST',
+      if (modoEdicion && imagenesSeleccionadas.length > 0) {
+        const nuevas = imagenesSeleccionadas.filter(img => !img.isExisting && img.file);
+        if (nuevas.length > 0) {
+          nuevasKeys = await subirImagenesAPropiedad({ id }, nuevas);
+        }
+      }
+
+      const todasLasKeys = imagenesSeleccionadas
+        .filter(img => img.isExisting || img.key)
+        .map(img =>
+          img.isExisting ? img.url.split('.com/')[1] : nuevasKeys.find(k => k.includes(img.file?.name)) || img.key
+        );
+      const datosCompletos = {
+        ...datosPropiedad,
+        urlImagen: todasLasKeys,
+        amenidades: amenidadesSeleccionadas
+      };
+      const endpoint = modoEdicion
+        ? `${BASE_URL}/marketplace/editarPropiedad/${id}`
+        : `${BASE_URL}/marketplace/crearpropiedad`;
+
+      const method = modoEdicion ? 'PUT' : 'POST';
+
+      const response = await fetch(endpoint, {
+        method,
         headers: {
           'Content-Type': 'application/json',
           'X-CSRF-Token': csrfToken
@@ -181,20 +268,43 @@ const CrearPropiedad = () => {
       const resultado = await response.json();
 
       if (!response.ok) {
-        throw new Error(resultado.message || 'Error al crear propiedad');
+        throw new Error(resultado.message || 'Error al guardar la propiedad');
       }
 
-      toast.success('Propiedad creada con éxito');
+      if (!modoEdicion && imagenesSeleccionadas.length > 0) {
+        await subirImagenesAPropiedad(resultado.id, imagenesSeleccionadas);
+      }
+
+      toast.success(modoEdicion ? 'Propiedad actualizada con éxito' : 'Propiedad creada con éxito');
       setTimeout(() => {
         navigate('/marketplace');
       }, 1500);
     } catch (err) {
       toast.error(`Error: ${err.message}`);
-      console.error('Error creando propiedad:', err);
+      console.error('Error guardando propiedad:', err);
     } finally {
       setLoading(false);
     }
   };
+
+  const subirImagenesAPropiedad = async (idPropiedad, imagenes) => {
+    const formData = new FormData();
+
+    imagenes.forEach(img => {
+      if (!img.isExisting && img.file) {
+        formData.append('images', img.file);
+      }
+    });
+    const response = await fetch(`${BASE_URL}/api/s3/subir-imagenes-propiedad/${idPropiedad.id}`, {
+      method: 'POST',
+      body: formData
+    });
+
+    const resultado = await response.json();
+    if (!response.ok) throw new Error(resultado.message);
+    return resultado.keys; // opcional si quieres usarlas luego
+  };
+
   return (
     <section className="containerCreadorPropiedades">
       {loading && <LoadingSpinner />}
@@ -237,6 +347,21 @@ const CrearPropiedad = () => {
                 <select name="estado" value={datosPropiedad.estado} onChange={handleChange}>
                   <option>Activo</option>
                   <option>Inactivo</option>
+                </select>
+              </div>
+              <div>
+                <label>Destacado</label>
+                <select
+                  name="destacado"
+                  value={datosPropiedad.destacado ? 'Si' : 'No'}
+                  onChange={e =>
+                    setDatosPropiedad(prev => ({
+                      ...prev,
+                      destacado: e.target.value === 'Si'
+                    }))
+                  }>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
                 </select>
               </div>
             </div>
@@ -320,7 +445,7 @@ const CrearPropiedad = () => {
         </div>
         <div className="ImagenesCard">
           <h4 style={{ marginBottom: '10px' }}>Imagenes</h4>
-          <DropzoneMultiple />
+          <DropzoneMultiple initialImages={datosPropiedad.urlImagen} onImagesChange={setImagenesSeleccionadas} />
         </div>
         <div className="AmenidadesCard">
           <div>
@@ -411,7 +536,7 @@ const CrearPropiedad = () => {
       </div>
       <div style={{ height: '10vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <button className="btnCrearPropiedad" onClick={handleSubmit}>
-          Crear propiedad
+          {modoEdicion ? 'Guardar cambios' : 'Crear propiedad'}
         </button>
       </div>
       <ToastContainer position="top-right" autoClose={3000} />

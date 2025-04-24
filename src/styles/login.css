@@ -45,11 +45,11 @@ body {
   }
   
   .sign-up .left-panel {
-    transform: translateX(-65%);
+    transform: translateX(-150%);
   }
   
   .sign-up .right-panel {
-    transform: translateX(151%);
+    transform: translateX(109%);
   }
 
   .switch-mode span {
@@ -156,6 +156,9 @@ body {
     margin: 13px;
     top: 0;
     right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .modal-header h2{

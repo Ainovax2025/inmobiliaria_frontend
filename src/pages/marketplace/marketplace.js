@@ -22,6 +22,10 @@ const Marketplace = () => {
 
   const csrfToken = useCsrfToken();
 
+  const handleEliminarPropiedad = idPropiedad => {
+    setPropiedades(prev => prev.filter(propiedad => propiedad.id !== idPropiedad));
+  };
+
   const obtenerPropiedades = useCallback(
     async (pagina = 1, filtrosAplicados = {}) => {
       if (!csrfToken) return;
@@ -87,6 +91,7 @@ const Marketplace = () => {
               bathrooms={propiedad.banos}
               area={`${propiedad.area}`}
               location={`${propiedad.ciudad}, ${propiedad.direccion}`}
+              onDelete={handleEliminarPropiedad}
             />
           ))}
         </div>

@@ -2,15 +2,15 @@
   "name": "inmobiliaria_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ainovax2025.github.io/inmobiliaria_frontend/",
+  "homepage": "/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "framer-motion": "^12.5.0",
-    "animate.css": "^4.1.1",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
@@ -20,6 +20,8 @@
     "react-slick": "^0.30.3",
     "react-toastify": "^11.0.5",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.19.1",
+    "sweetalert2-react-content": "^5.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
