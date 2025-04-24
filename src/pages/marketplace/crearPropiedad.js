@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../styles/crearPropiedad.css';
 import DropzoneMultiple from '../../components/dropImagenes';
@@ -7,15 +7,12 @@ import { useCsrfToken } from '../../components/csrf.jsx';
 import getAmenityIcon from '../../components/amenidades.jsx';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { EstadoUsuarioContext } from '../../components/estadoUsuarioActivo'; // 👈 Importa el contexto
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const CrearPropiedad = () => {
   const csrfToken = useCsrfToken();
-  const url = [
-    'https://s3.amazonaws.com/imagenesprof.fincaraiz.com.co/OVFR_COL/2021/12/2/2354528_995_11.jpg',
-    'https://img.mitula.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzAxOTU2YzA4LWYxZWUtNzY2OS04NTZiLWU4NzExZmYxYTI2ZC8wMTk1NmMxZC04OGU0LTcwYTYtOTFkMC1lODkzNjNiOTdiNTIuanBnIiwiYnJhbmQiOiJtaXR1bGEiLCJlZGl0cyI6eyJyb3RhdGUiOm51bGwsInJlc2l6ZSI6eyJ3aWR0aCI6MzgwLCJoZWlnaHQiOjIzMCwiZml0IjoiY292ZXIifX19',
-    'https://images.ctfassets.net/8lc7xdlkm4kt/6bYolzLQSPgZawCDlHb9qr/ca35368f17fc3143fe969c9b074a73de/mint-apartamentos-barranquilla-sala.jpg'
-  ];
+  const url = [];
   const { id } = useParams(); // esto vendrá de la ruta /editarpropiedad/:id
   const modoEdicion = !!id;
   const [imagenesSeleccionadas, setImagenesSeleccionadas] = useState([]);
@@ -24,7 +21,7 @@ const CrearPropiedad = () => {
   const [amenidadesSeleccionadas, setAmenidadesSeleccionadas] = useState([]);
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const [datosPropiedad, setDatosPropiedad] = useState({
-    usuarioId: storedUser.id,
+    usuarioId: storedUser && storedUser.id,
     titulo: '',
     precio: '',
     tipo: 'Venta',
@@ -49,7 +46,14 @@ const CrearPropiedad = () => {
     fechaPublicacion: new Date(),
     urlImagen: url
   });
+  const { user } = useContext(EstadoUsuarioContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user || user.rol !== 'admin') {
+      navigate('/'); // Redirige si no es admin
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     const fetchAmenidades = async () => {
@@ -225,15 +229,27 @@ const CrearPropiedad = () => {
       return;
     }
 
-    const datosCompletos = {
-      ...datosPropiedad,
-      amenidades: amenidadesSeleccionadas,
-      urlImagen: imagenesSeleccionadas.length > 0 ? imagenesSeleccionadas : datosPropiedad.urlImagen
-    };
-
     try {
       setLoading(true);
+      let nuevasKeys = [];
 
+      if (modoEdicion && imagenesSeleccionadas.length > 0) {
+        const nuevas = imagenesSeleccionadas.filter(img => !img.isExisting && img.file);
+        if (nuevas.length > 0) {
+          nuevasKeys = await subirImagenesAPropiedad({ id }, nuevas);
+        }
+      }
+
+      const todasLasKeys = imagenesSeleccionadas
+        .filter(img => img.isExisting || img.key)
+        .map(img =>
+          img.isExisting ? img.url.split('.com/')[1] : nuevasKeys.find(k => k.includes(img.file?.name)) || img.key
+        );
+      const datosCompletos = {
+        ...datosPropiedad,
+        urlImagen: todasLasKeys,
+        amenidades: amenidadesSeleccionadas
+      };
       const endpoint = modoEdicion
         ? `${BASE_URL}/marketplace/editarPropiedad/${id}`
         : `${BASE_URL}/marketplace/crearpropiedad`;
@@ -255,6 +271,10 @@ const CrearPropiedad = () => {
         throw new Error(resultado.message || 'Error al guardar la propiedad');
       }
 
+      if (!modoEdicion && imagenesSeleccionadas.length > 0) {
+        await subirImagenesAPropiedad(resultado.id, imagenesSeleccionadas);
+      }
+
       toast.success(modoEdicion ? 'Propiedad actualizada con éxito' : 'Propiedad creada con éxito');
       setTimeout(() => {
         navigate('/marketplace');
@@ -265,6 +285,24 @@ const CrearPropiedad = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const subirImagenesAPropiedad = async (idPropiedad, imagenes) => {
+    const formData = new FormData();
+
+    imagenes.forEach(img => {
+      if (!img.isExisting && img.file) {
+        formData.append('images', img.file);
+      }
+    });
+    const response = await fetch(`${BASE_URL}/api/s3/subir-imagenes-propiedad/${idPropiedad.id}`, {
+      method: 'POST',
+      body: formData
+    });
+
+    const resultado = await response.json();
+    if (!response.ok) throw new Error(resultado.message);
+    return resultado.keys; // opcional si quieres usarlas luego
   };
 
   return (

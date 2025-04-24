@@ -32,7 +32,6 @@ const PropiedadDetalle = () => {
 
         const data = await response.json();
         setPropiedad(data);
-        console.log(data);
       } catch (error) {
         console.error('Error en la obtención:', error);
       } finally {
@@ -72,7 +71,7 @@ const PropiedadDetalle = () => {
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 0
                     }).format(propiedad.precio)}
-                    {propiedad.tipooperacion === 'Venta' ? '' : '/mes'}
+                    {propiedad.tipooperacion.includes('Venta') ? '' : '/mes'}
                   </h2>
 
                   <h1 className="tituloPropiedad">{propiedad.titulo}</h1>
@@ -88,7 +87,7 @@ const PropiedadDetalle = () => {
                         minimumFractionDigits: 0,
                         maximumFractionDigits: 0
                       }).format(propiedad.precio)}
-                      /mes
+                      {propiedad.tipooperacion.includes('Venta') ? '' : '/mes'}
                     </h2>
                     <span>Para {propiedad.tipooperacion}</span>
                   </div>

@@ -19,7 +19,7 @@ const DropzoneMultiple = ({ initialImages = [], onImagesChange }) => {
 
   useEffect(() => {
     if (onImagesChange) {
-      onImagesChange(images.map(img => img.url));
+      onImagesChange(images); // ✅ esto sí pasa el `file`, `url`, y `isExisting`
     }
   }, [images, onImagesChange]);
 

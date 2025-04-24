@@ -8,11 +8,17 @@ export const EstadoUsuarioProvider = ({ children }) => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
-    if (storedUser) setUser(JSON.parse(storedUser).user);
+    if (storedUser && storedUser !== 'undefined') {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (e) {
+        localStorage.removeItem('user');
+      }
+    }
   }, []);
 
   const login = userData => {
-    localStorage.setItem('user', JSON.stringify({ user: userData }));
+    localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
   };
 
