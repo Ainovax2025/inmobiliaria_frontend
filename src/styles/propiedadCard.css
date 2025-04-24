@@ -123,10 +123,12 @@
   }
   
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 900px) {
     
     .property-card{
       width: 360px;
+      height: 55vh;
     }
+    
 }
 

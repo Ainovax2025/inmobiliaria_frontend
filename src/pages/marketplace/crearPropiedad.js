@@ -240,11 +240,11 @@ const CrearPropiedad = () => {
         }
       }
 
-      const todasLasKeys = imagenesSeleccionadas
-        .filter(img => img.isExisting || img.key)
-        .map(img =>
-          img.isExisting ? img.url.split('.com/')[1] : nuevasKeys.find(k => k.includes(img.file?.name)) || img.key
-        );
+      const existentesKeys = imagenesSeleccionadas
+        .filter(img => img.isExisting && img.url)
+        .map(img => img.url.split('.com/')[1]);
+
+      const todasLasKeys = [...existentesKeys, ...nuevasKeys];
       const datosCompletos = {
         ...datosPropiedad,
         urlImagen: todasLasKeys,
