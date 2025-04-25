@@ -73,7 +73,7 @@ const FeaturedProperties = () => {
         // Activa fade-in
         setFade(true);
       }, 500); // Duración del efecto de fade-out en milisegundos
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
