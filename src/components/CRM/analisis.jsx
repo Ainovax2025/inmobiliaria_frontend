@@ -11,6 +11,8 @@ import {
   Legend
 } from 'chart.js';
 import '../../styles/SCRM/analisis.css';
+import Comp from '../CRM/comp.jsx';
+import Pors from '../CRM/pors.jsx';
 
 ChartJS.register(
   CategoryScale,
@@ -66,7 +68,7 @@ const Analisis = () => {
   );
 
   const toggleCurve = (label) => {
-    if (label === visibleByDefault) return; // 'Ventas' siempre visible
+    if (label === visibleByDefault) return;
     setVisibleCurves((prev) => ({
       ...prev,
       [label]: !prev[label],
@@ -122,13 +124,15 @@ const Analisis = () => {
   };
 
   return (
-    <div className="analisis-container">
-      <h2 className="analisis-title">Análisis de CRM</h2>
-
-      <div className="analisis-content">
+    <div className="analisis-content">
+        <p className="analisis-title">
+        Análisis de datos
+        </p>
         <p className="analisis-description">
           Aquí podrás ver el análisis de datos y reportes detallados sobre las interacciones con los clientes, tendencias de ventas y más.
         </p>
+
+        <Comp valorActual={750} valorIdeal={1000} satisfaccion={82} />
 
         <div style={{ marginBottom: '20px' }}>
           {allDatasets.map((ds) => (
@@ -153,12 +157,16 @@ const Analisis = () => {
           ))}
         </div>
 
-        <div className="analisis-chart">
-          <h3>Gráfico de Tendencias y Métricas</h3>
-          <Line data={data} options={options} />
-        </div>
+        {/* NUEVO CONTENEDOR FLEXIBLE */}
+        <div className="analisis-flex">
+          <div className="analisis-chart">
+            <h3>Gráfico de Tendencias y Métricas</h3>
+            <Line data={data} options={options} />
+          </div>
+        <Pors />
       </div>
     </div>
+    
   );
 };
 

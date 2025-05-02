@@ -1,0 +1,36 @@
+.pors-container {
+    width: 20vw; /* 40% del ancho de la ventana */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pors-item {
+    margin-bottom: 15px;
+  }
+  
+  .pors-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .pors-bar-background {
+    background-color: #e0e0e0;
+    height: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .pors-bar-fill {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.4s ease;
+  }
+  
+  .pors-value {
+    margin-left: 8px;
+    font-weight: bold;
+  }
+  
