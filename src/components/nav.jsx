@@ -6,6 +6,7 @@ import Login from './login.jsx';
 import agentPlaceholder from '../assets/wallpapers/Agent2.jpg';
 import '../styles/navbar.css';
 import { EstadoUsuarioContext } from './estadoUsuarioActivo';
+import { MdDashboard } from 'react-icons/md';
 
 function Navbar() {
   const { user, logout } = useContext(EstadoUsuarioContext);
@@ -38,6 +39,10 @@ function Navbar() {
             </li>
             <li className="dropdown">
               <Link to="/marketplace">Propiedades</Link>
+            </li>
+
+            <li>
+              <Link to="/crm">CRM</Link>
             </li>
 
             {/* 👉 Mostrar solo si el usuario es admin */}
@@ -87,6 +92,12 @@ function Navbar() {
               <li>
                 <PiBuildingApartment />
                 <span>Busca</span>
+              </li>
+            </Link>
+            <Link to="/crm">
+              <li>
+                <MdDashboard />
+                <span>CRM</span>
               </li>
             </Link>
           </ul>
