@@ -1,12 +1,11 @@
 .crm-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;  /* Alinea el contenido al lado izquierdo */
-    padding-left: 20px;       /* Añade un pequeño margen en el lado izquierdo */
-    padding-top: 5px;
-    background-color: #2e2f26;
+    flex-direction: row;
     min-height: 100vh;
+    background-color: #2e2f26;
     color: #f0f0f0;
+    position: relative;
+    z-index: 1;
   }
   
   .crm-title {
@@ -17,12 +16,26 @@
   
   .crm-nav-menu {
     list-style: none;
-    padding: 0;
+    padding: 20px;
     margin: 0;
+    width: 200px;
+    background-color: #252620;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   }
   
   .crm-nav-item {
     margin: 20px 0;
+  }
+
+  .analisis-content {
+    padding: 20px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
   }
   
   .crm-link {

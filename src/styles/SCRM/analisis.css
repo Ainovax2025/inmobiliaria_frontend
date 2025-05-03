@@ -3,12 +3,42 @@
     background-color: #f4f4f4;
     min-height: 100vh;
   }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+  }
+
+  .pie-chart {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px);
+    min-width: 300px;
+  }
+
+  .pie-chart h3 {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+  }
   
   .analisis-title {
     font-size: 28px;
     margin-bottom: 20px;
     font-weight: bold;
-    color: #333;
+    color: #d3cdcd;
   }
   
   .analisis-description {
