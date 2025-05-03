@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Line, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,8 +8,10 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 } from 'chart.js';
+import KPICard from './KPICard';
 import '../../styles/SCRM/analisis.css';
 import Comp from '../CRM/comp.jsx';
 import Pors from '../CRM/pors.jsx';
@@ -21,10 +23,53 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const Analisis = () => {
+  // Datos para el gráfico de torta de ventas vs arriendos
+  const ventasVsArriendos = {
+    labels: ['Ventas', 'Arriendos'],
+    datasets: [{
+      data: [60, 40],
+      backgroundColor: ['rgba(54, 162, 235, 0.8)', 'rgba(255, 99, 132, 0.8)'],
+      borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+      borderWidth: 1,
+    }],
+  };
+
+  // Datos para las tarjetas KPI
+  const kpiData = [
+    {
+      title: 'Total de Conversaciones',
+      value: '1,234',
+      icon: '💬',
+      description: 'Interacciones iniciadas con la IA',
+      type: 'default'
+    },
+    {
+      title: 'Leads Generados',
+      value: '456',
+      icon: '🎯',
+      description: 'Usuarios interesados en comprar o rentar',
+      type: 'success'
+    },
+    {
+      title: 'Tasa de Conversión',
+      value: '37%',
+      icon: '📈',
+      description: 'Conversaciones que generaron leads',
+      type: 'warning'
+    },
+    {
+      title: 'Satisfacción Promedio',
+      value: '4.5/5',
+      icon: '⭐',
+      description: 'Puntuación media de las conversaciones',
+      type: 'success'
+    }
+  ];
   const allDatasets = [
     {
       label: 'Total',
@@ -126,13 +171,32 @@ const Analisis = () => {
   return (
     <div className="analisis-content">
         <p className="analisis-title">
-        Análisis de datos
+        Análisis de chat bot
         </p>
         <p className="analisis-description">
-          Aquí podrás ver el análisis de datos y reportes detallados sobre las interacciones con los clientes, tendencias de ventas y más.
+          Aquí podrás ver el análisis de datos y reportes detallados sobre las interacciones con los clientes.
         </p>
 
-        <Comp valorActual={750} valorIdeal={1000} satisfaccion={82} />
+        <div className="kpi-grid">
+          {kpiData.map((kpi, index) => (
+            <KPICard
+              key={index}
+              title={kpi.title}
+              value={kpi.value}
+              icon={kpi.icon}
+              description={kpi.description}
+              type={kpi.type}
+            />
+          ))}
+        </div>
+
+        <div className="chart-container">
+          <div className="pie-chart">
+            <h3>Ventas vs Arriendos</h3>
+            <Pie data={ventasVsArriendos} />
+          </div>
+          <Comp valorActual={750} valorIdeal={1000} satisfaccion={82} />
+        </div>
 
         <div style={{ marginBottom: '20px' }}>
           {allDatasets.map((ds) => (

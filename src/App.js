@@ -9,7 +9,6 @@ import CrearPropiedad from './pages/marketplace/crearPropiedad.js';
 import CRM from './components/CRM/CRM.jsx'; // Importar el componente CRM
 import Citas from './components/CRM/citas.jsx'; // Nuevo componente para Citas
 import Analisis from './components/CRM/analisis.jsx'; // Nuevo componente para Análisis
-import Footer from './components/footer.jsx';
 import './styles/app.css';
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
           <Route path="/crm/analisis" element={<Analisis />} /> {/* Ruta para Análisis */}
         </Routes>
       </div>
-      <Footer />
     </>
   );
 }

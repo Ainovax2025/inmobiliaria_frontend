@@ -6,6 +6,7 @@ import SocialButtons from '../../components/SocialButtons'; // ✅ Importamos lo
 import '../../styles/home.css';
 import Servicios from '../../components/Servicios';
 import Equipo from '../../components/Equipo';
+import Footer from '../../components/footer';
 
 const Home = () => {
   return (
@@ -25,7 +26,7 @@ const Home = () => {
       
       <Equipo />
       <SocialButtons />
-      
+      <Footer />
     </div>
   );
 };
