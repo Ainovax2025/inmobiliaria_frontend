@@ -20,7 +20,6 @@ const Bienvenida = () => {
         loop
         playsInline
         preload="auto" // mejora el tiempo de arranque
-        poster="/images/fallback.jpg" // opcional: imagen mientras carga
       />
       <div className="bienvenida-content">
         <div className="bienvenida-text">

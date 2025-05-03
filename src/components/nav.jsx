@@ -41,9 +41,6 @@ function Navbar() {
               <Link to="/marketplace">Propiedades</Link>
             </li>
 
-            <li>
-              <Link to="/crm">CRM</Link>
-            </li>
 
             {/* 👉 Mostrar solo si el usuario es admin */}
             {user?.rol === 'admin' && (
@@ -94,12 +91,7 @@ function Navbar() {
                 <span>Busca</span>
               </li>
             </Link>
-            <Link to="/crm">
-              <li>
-                <MdDashboard />
-                <span>CRM</span>
-              </li>
-            </Link>
+
           </ul>
         </nav>
       )}
